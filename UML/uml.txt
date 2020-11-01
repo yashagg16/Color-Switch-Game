@@ -1,0 +1,16 @@
+Game Class: extends serializable
+Attributes:
+	Player_color
+	Player_score
+	Obstacle_list
+MEthods:
+	gen_obstacleList(): void
+	increase_score(int): void
+	get_score(): int
+	get_color(): 
+	change_color(): void
+	pause(): void
+	serialize(): void
+	
+	
+
