@@ -3,6 +3,7 @@ Attributes:
 	Player_color
 	Player_score
 	Obstacle_list
+	lvl
 MEthods:
 	gen_obstacleList(): void
 	increase_score(int): void
@@ -11,6 +12,11 @@ MEthods:
 	change_color(): void
 	pause(): void
 	serialize(): void
+	commence(): void
+	inc_level(): voidd
+	game_over(): void
+	check_inputs(): void
+	
 	
 	
 
