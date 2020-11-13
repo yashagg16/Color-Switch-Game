@@ -9,6 +9,11 @@ This is the repository for the course project in the Advanced Programming Course
   5.  Ohter refinements.
   
   
+##Targets:
+  > Make static screens by 22 Nov.
+  > Make field classes 
+  
+  
   ## UML DIAGRAM LINK
   https://app.creately.com/diagram/yD14qt3Xd3V/edit
   
