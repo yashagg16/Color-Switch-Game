@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.RotateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,12 +9,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class Main extends Application {
 
@@ -40,10 +43,22 @@ public class Main extends Application {
         makeArc(arc2, 400, 300, 100, 90, Color.GREEN);
         makeArc(arc3, 400, 300, 100, 180, Color.YELLOW);
         makeArc(arc4, 400, 300, 100, 270, Color.BLUE);
+        final Group outerCircle = new Group(arc1, arc2, arc3, arc4);
 
+        RotateTransition rotate = new RotateTransition();
+        rotate.setAxis(Rotate.Z_AXIS);
+        rotate.setFromAngle(0);
+        rotate.setToAngle(360);
+        rotate.setCycleCount(RotateTransition.INDEFINITE);
+        rotate.setDuration(Duration.millis(1000));
+        rotate.setNode(outerCircle);
+        rotate.play();
         final Circle circ2 = new Circle(400, 300, 80, Color.BLACK);
-        final Group root = new Group(arc1, arc2, arc3, arc4, circ2);
+        final Group root = new Group();
+        root.getChildren().add(outerCircle);
+        root.getChildren().add(circ2);
         final Scene scene = new Scene(root, 800, 600, Color.BLACK);
+//        outerCircle.play();
         primaryStage.setScene(scene);
         primaryStage.show();
 
