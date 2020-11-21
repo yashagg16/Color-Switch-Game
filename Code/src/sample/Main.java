@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Main extends Application {
 
@@ -81,10 +86,24 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+        delay.setOnFinished( event -> {
+            try {
+                openGame(primaryStage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        delay.play();
+
     }
 
-
-    public static void main(String[] args) {
+    public static void openGame(Stage primaryStage) throws IOException {
+        primaryStage.close();
+        StartMenu startMenu = new StartMenu();
+        startMenu.start(primaryStage);
+    }
+    public static void main(String[] args) throws InterruptedException, IOException {
         launch(args);
     }
 }

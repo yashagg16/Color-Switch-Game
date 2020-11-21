@@ -16,12 +16,24 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50a4d6f7-edb7-440b-b93d-047f8a43b1d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/course_project_AP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/sample/Gameplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/src/sample/Gameplay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/sample/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/src/sample/Gameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/sample/PauseMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/src/sample/PauseMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/src/sample/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Code/src/sample/PauseMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +79,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -79,14 +103,18 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="434" y="131" width="1024" height="852" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1605980207501" />
-    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605980318025">
+    <state x="418" y="211" width="1107" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605981932841">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605980318025" />
+    <state x="418" y="211" width="1107" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605981932841" />
     <state x="611" y="234" width="688" height="645" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605234013076">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="611" y="234" width="688" height="645" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605234013076" />
+    <state x="100" y="127" width="1720" height="853" key="DiffContextDialog" timestamp="1605981888151">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="100" y="127" width="1720" height="853" key="DiffContextDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605981888151" />
     <state x="505" y="297" width="898" height="519" key="FileChooserDialogImpl" timestamp="1605980347693">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -95,5 +123,19 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="228" y="166" width="1540" height="781" key="new project wizard/0.27.1920.1053@0.27.1920.1053" timestamp="1605236100348" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/Code/src/sample/StartMenu.java</url>
+          <line>21</line>
+          <properties class="sample.StartMenu" method="main">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
