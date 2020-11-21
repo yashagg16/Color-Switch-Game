@@ -34,7 +34,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Color Switch");
 
-//        final Circle circ1 = new Circle(400, 300, 100, Color.WHITE);
+        //Creating the color switch logo
         Arc arc1 = new Arc();
         Arc arc2 = new Arc();
         Arc arc3 = new Arc();
@@ -43,8 +43,16 @@ public class Main extends Application {
         makeArc(arc2, 400, 300, 100, 90, Color.GREEN);
         makeArc(arc3, 400, 300, 100, 180, Color.YELLOW);
         makeArc(arc4, 400, 300, 100, 270, Color.BLUE);
+
+        //grouping all the arcs together for the outside arcs
         final Group outerCircle = new Group(arc1, arc2, arc3, arc4);
 
+        //loading the image using the mainPage.fxml
+        Parent MainPage = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        MainPage.setLayoutX(320);
+        MainPage.setLayoutY(20);
+
+        //creating the rotation aspect of the program;
         RotateTransition rotate = new RotateTransition();
         rotate.setAxis(Rotate.Z_AXIS);
         rotate.setFromAngle(0);
@@ -53,12 +61,23 @@ public class Main extends Application {
         rotate.setDuration(Duration.millis(1000));
         rotate.setNode(outerCircle);
         rotate.play();
+
+        //creating the inner circle
         final Circle circ2 = new Circle(400, 300, 80, Color.BLACK);
+
+        //adding the loading bar
+        
+        //final group to add all the elements into
         final Group root = new Group();
         root.getChildren().add(outerCircle);
         root.getChildren().add(circ2);
-        final Scene scene = new Scene(root, 800, 600, Color.BLACK);
-//        outerCircle.play();
+        root.getChildren().add(MainPage);
+
+
+        //creating the scene and adding the root to it
+        final Scene scene = new Scene(root,  800, 800, Color.BLACK);
+
+        //display
         primaryStage.setScene(scene);
         primaryStage.show();
 
