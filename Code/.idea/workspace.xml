@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/branch_5" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1kbqwbhAH7FsiAhgkS2xQoMMBBS" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/javafx-sdk-11.0.2/lib/javafx.base.jar" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
+  </component>
+  <component name="RunManager" selected="Application.StartMenu">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <module name="Code" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PauseMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.PauseMenu" />
+      <module name="Code" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.StartMenu" />
+      <module name="Code" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.PauseMenu" />
+      <item itemvalue="Application.StartMenu" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StartMenu" />
+        <item itemvalue="Application.PauseMenu" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="" />
+      <created>1605979877494</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605979877494</updated>
+    </task>
+    <task id="LOCAL-00001" summary="added some changes">
+      <created>1605980811287</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605980811287</updated>
+    </task>
+    <task id="LOCAL-00002" summary="transitioning from the Initial Page to the StartMenu done.">
+      <created>1605983221117</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605983221117</updated>
+    </task>
+    <task id="LOCAL-00003" summary="new Game Button functionality added.">
+      <created>1605992282595</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605992282595</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Game Icon now rotates when the mouse hovers it.">
+      <created>1605997926898</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605997926898</updated>
+    </task>
+    <task id="LOCAL-00005" summary="All icons now rotates when the mouse hovers the button.">
+      <created>1605998961276</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605998961276</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/branch_5" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added some changes" />
+    <MESSAGE value="transitioning from the Initial Page to the StartMenu done." />
+    <MESSAGE value="new Game Button functionality added." />
+    <MESSAGE value="Game Icon now rotates when the mouse hovers it." />
+    <MESSAGE value="All icons now rotates when the mouse hovers the button." />
+    <option name="LAST_COMMIT_MESSAGE" value="All icons now rotates when the mouse hovers the button." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="720" y="214" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605990890355">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="720" y="214" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605990890355" />
+    <state x="743" y="261" width="424" height="591" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1605987434519">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="743" y="261" width="424" height="591" key="#com.intellij.ide.macro.MacrosDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605987434519" />
+    <state x="288" y="262" width="374" height="590" key="#com.intellij.ide.util.MemberChooser" timestamp="1605992078440">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="288" y="262" width="374" height="590" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1605992078440" />
+    <state x="721" y="311" width="898" height="519" key="FileChooserDialogImpl" timestamp="1605990354132">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="721" y="311" width="898" height="519" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1605990354132" />
+    <state width="1876" height="425" key="GridCell.Tab.0.bottom" timestamp="1605998821452">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="425" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1605998821452" />
+    <state width="1876" height="425" key="GridCell.Tab.0.center" timestamp="1605998821452">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="425" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1605998821452" />
+    <state width="1876" height="425" key="GridCell.Tab.0.left" timestamp="1605998821452">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="425" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1605998821452" />
+    <state width="1876" height="425" key="GridCell.Tab.0.right" timestamp="1605998821452">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="425" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1605998821452" />
+    <state width="1876" height="341" key="GridCell.Tab.1.bottom" timestamp="1605989023575">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="341" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1605989023575" />
+    <state width="1876" height="341" key="GridCell.Tab.1.center" timestamp="1605989023575">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="341" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1605989023575" />
+    <state width="1876" height="341" key="GridCell.Tab.1.left" timestamp="1605989023575">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="341" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1605989023575" />
+    <state width="1876" height="341" key="GridCell.Tab.1.right" timestamp="1605989023575">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1876" height="341" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1605989023575" />
+    <state x="250" y="196" width="1024" height="852" key="SettingsEditor" timestamp="1605990363571">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="250" y="196" width="1024" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1605990363571" />
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605998966741">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605998966741" />
+    <state x="306" y="266" width="902" height="719" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1605988331433">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="306" y="266" width="902" height="719" key="com.intellij.javaee.MapExternalResourceDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605988331433" />
+    <state x="472" y="283" width="965" height="643" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1605991452656">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="472" y="283" width="965" height="643" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.27.1920.1053@0.27.1920.1053" timestamp="1605991452656" />
+    <state x="642" y="169" width="635" height="768" key="find.popup" timestamp="1605999604754">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="642" y="169" width="635" height="768" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605999604754" />
+    <state x="645" y="312" width="619" height="489" key="refactoring.ChangeSignatureDialog" timestamp="1605997788345">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="645" y="312" width="619" height="489" key="refactoring.ChangeSignatureDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605997788345" />
+    <state x="1104" y="252" key="run.anything.popup" timestamp="1605987913335">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="1104" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605987913335" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
