@@ -58,11 +58,15 @@ public class PauseMenu  extends Application {
 
     @Override
     public void start(Stage PrimaryStage) throws IOException {
-        Parent StartMenu = FXMLLoader.load(getClass().getResource("pauseMenu.fxml"));
+        Parent StartMenu = FXMLLoader.load(getClass().getResource("PauseMenu.fxml"));
         PrimaryStage.setTitle("Color Switch");
         final Scene scene = new Scene(StartMenu);
 
         PrimaryStage.setScene(scene);
         PrimaryStage.show();
+    }
+
+    public static void main (String[] args){
+        launch(args);
     }
 }
