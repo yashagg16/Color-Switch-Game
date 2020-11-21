@@ -8,7 +8,7 @@
    <children>
       <ImageView fitHeight="47.0" fitWidth="40.0" layoutX="189.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/console.png" />
+            <Image url="@../../Code/src/assets/console.png" />
          </image>
       </ImageView>
       <Button alignment="CENTER" layoutX="250.0" layoutY="50.0" mnemonicParsing="false" text="New Game" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
@@ -17,17 +17,17 @@
       <Button alignment="CENTER" layoutX="249.0" layoutY="250.0" mnemonicParsing="false" text="Exit Game" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
       <ImageView fitHeight="66.0" fitWidth="40.0" layoutX="189.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/load(3).png" />
+            <Image url="@../../Code/src/assets/load(3).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="56.0" fitWidth="65.0" layoutX="181.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/high-score.png" />
+            <Image url="@../../Code/src/assets/high-score.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="56.0" fitWidth="40.0" layoutX="189.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/exit.png" />
+            <Image url="@../../Code/src/assets/exit.png" />
          </image>
       </ImageView>
    </children>
