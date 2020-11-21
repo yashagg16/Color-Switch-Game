@@ -1,5 +1,6 @@
 # course_project_AP
-This is the repository for the course project in the Advanced Programming Course. 
+This is the repository for the course project in the Advanced Programming Course 2020.
+
 
 ## Todo: Key Functionalities of the Game
   1.  Making key objects, the player, the obstacles, the score etc.
