@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.RotateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.IOException;
 
 import static javafx.application.Application.launch;
@@ -18,6 +24,8 @@ public class StartMenu extends Application {
     @FXML
     private AnchorPane startMenuScreen;
 
+    @FXML
+    private ImageView newGameIcon;
     @FXML
     private Button newGameButton;
 
@@ -33,6 +41,23 @@ public class StartMenu extends Application {
 //        Gameplay.start(newStage);
 //    }
 //
+    }
+
+    @FXML
+    void flipNewGameIcon (MouseEvent event) throws  IOException {
+        RotateTransition rotate = new RotateTransition();
+        rotate.setAxis(Rotate.Z_AXIS);
+        rotate.setFromAngle(0);
+        rotate.setToAngle(360);
+        rotate.setCycleCount(2);
+        rotate.setDuration(Duration.millis(500));
+        rotate.setNode((Node)newGameIcon);
+        rotate.play();
+    }
+
+    @FXML
+    void exitStartMenu(ActionEvent event) throws IOException {
+
     }
     @Override
     public void start(Stage PrimaryStage) throws IOException {
