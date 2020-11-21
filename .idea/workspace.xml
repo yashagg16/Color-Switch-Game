@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a4d6f7-edb7-440b-b93d-047f8a43b1d6" name="Default Changelist" comment="" />
+    <list default="true" id="50a4d6f7-edb7-440b-b93d-047f8a43b1d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/course_project_AP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +32,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1kDRinS8en2IzxoMltKrfi6C2Yq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,6 +45,11 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Code/src/sample" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -65,18 +75,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="434" y="131" key="#Project_Structure" timestamp="1605234145632">
+    <state x="434" y="131" width="1024" height="852" key="#Project_Structure" timestamp="1605980207501">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="434" y="131" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1605234145632" />
+    <state x="434" y="131" width="1024" height="852" key="#Project_Structure/0.27.1920.1053@0.27.1920.1053" timestamp="1605980207501" />
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605980318025">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605980318025" />
     <state x="611" y="234" width="688" height="645" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605234013076">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="611" y="234" width="688" height="645" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605234013076" />
-    <state x="505" y="297" width="898" height="519" key="FileChooserDialogImpl" timestamp="1605806587765">
+    <state x="505" y="297" width="898" height="519" key="FileChooserDialogImpl" timestamp="1605980347693">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="505" y="297" width="898" height="519" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1605806587765" />
+    <state x="505" y="297" width="898" height="519" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1605980347693" />
     <state x="228" y="166" width="1540" height="781" key="new project wizard" timestamp="1605236100348">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
