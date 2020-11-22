@@ -99,7 +99,6 @@ public class Main extends Application {
     }
 
     public static void openGame(Stage primaryStage) throws IOException {
-        primaryStage.close();
         StartMenu startMenu = new StartMenu();
         startMenu.start(primaryStage);
     }
