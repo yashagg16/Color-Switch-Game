@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Pane" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Gameplay">
+<AnchorPane fx:id="Pane" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Gameplay">
    <children>
-      <Circle fx:id="Ball" fill="DODGERBLUE" layoutX="512.0" layoutY="480.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label fx:id="ScoreLabel" alignment="CENTER" layoutX="925.0" layoutY="62.0" text="Label" />
-      <Label alignment="CENTER" layoutX="884.0" prefHeight="56.0" prefWidth="119.0" text="Score:">
+      <Circle fx:id="ball" fill="DODGERBLUE" layoutX="522.0" layoutY="478.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="ScoreLabel" alignment="CENTER" layoutX="935.0" layoutY="48.0" text="00" textFill="#ebe3e3" />
+      <Label alignment="CENTER" layoutX="884.0" prefHeight="56.0" prefWidth="119.0" text="Score:" textAlignment="CENTER" textFill="#fafafa" wrapText="true">
          <font>
             <Font name="SansSerif Regular" size="25.0" />
          </font></Label>
-      <ImageView fx:id="PauseButton_img" fitHeight="63.0" fitWidth="105.0" onMouseClicked="#openPauseMenu" pickOnBounds="true" preserveRatio="true" translateZ="1.0">
+      <ImageView fx:id="PauseButton_img" fitHeight="63.0" fitWidth="105.0" onMouseClicked="#openPauseMenu" onMouseEntered="#flippause" pickOnBounds="true" preserveRatio="true" translateZ="1.0">
          <image>
-            <Image url="@../assets/pause.png" />
+            <Image url="@../Assets/pause.png" />
          </image>
       </ImageView>
-<Arc fx:id="arc1" centerX="512.0" centerY="250.0" fill="DODGERBLUE" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#f8f6f6" strokeType="INSIDE" type="ROUND" />
+      <Arc fx:id="arc1" centerX="512.0" centerY="250.0" fill="DODGERBLUE" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#f8f6f6" strokeType="INSIDE" type="ROUND" />
       <Arc fx:id="arc2" centerX="512.0" centerY="250.0" fill="LIME" layoutX="110.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" rotate="90.0" startAngle="90.0" stroke="#f5f3f3" strokeType="INSIDE" type="ROUND" />
       <Arc fx:id="arc3" centerX="512.0" centerY="250.0" fill="#ff1f1f" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#f5f4f4" strokeType="INSIDE" type="ROUND" />
       <Arc fx:id="arc4" centerX="512.0" centerY="250.0" fill="#f100ff" layoutX="110.0" layoutY="108.0" length="90.0" radiusX="100.0" radiusY="100.0" rotate="180.0" startAngle="90.0" stroke="#fcf8f8" strokeType="INSIDE" type="ROUND" />
       <Circle fx:id="Incircle" fill="BLACK" layoutX="522.0" layoutY="258.0" radius="76.0" stroke="#fffefe" strokeType="INSIDE" />
+      <ImageView fx:id="Star" fitHeight="63.0" fitWidth="105.0" layoutX="488.0" layoutY="227.0" onMouseClicked="#openPauseMenu" onMouseEntered="#flippause" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/star.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
