@@ -34,11 +34,14 @@ public class StartMenu extends Application {
     private  ImageView exitIcon;
     @FXML
     void openGamePlay(ActionEvent event) throws IOException {
-        Parent gamePlay = FXMLLoader.load(getClass().getResource("Gameplay.fxml"));
-        Scene scene = new Scene(gamePlay);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
+        //Parent gamePlay = FXMLLoader.load(getClass().getResource("Gameplay.fxml"));
+        //Scene scene = new Scene(gamePlay);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gameplay.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        Gameplay controller = fxmlLoader.getController();
+        controller.initData();
+        startMenuScreen.getChildren().setAll(pane);
 //        Gameplay Gameplay = new Gameplay();
 //        Stage newStage = new Stage();
 //        Gameplay.start(newStage);
@@ -79,6 +82,7 @@ public class StartMenu extends Application {
     public void start(Stage PrimaryStage) throws IOException {
             Parent StartMenu = FXMLLoader.load(getClass().getResource("StartMenu.fxml"));
             final Scene scene = new Scene(StartMenu);
+
 
             PrimaryStage.setScene(scene);
             PrimaryStage.show();

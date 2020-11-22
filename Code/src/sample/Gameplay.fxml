@@ -18,7 +18,7 @@
          </font></Label>
       <ImageView fx:id="PauseButton_img" fitHeight="63.0" fitWidth="105.0" onMouseClicked="#openPauseMenu" onMouseEntered="#flippause" pickOnBounds="true" preserveRatio="true" translateZ="1.0">
          <image>
-            <Image url="@../Assets/pause.png" />
+            <Image url="@../assets/pause.png" />
          </image>
       </ImageView>
       <Arc fx:id="arc1" centerX="512.0" centerY="250.0" fill="DODGERBLUE" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#f8f6f6" strokeType="INSIDE" type="ROUND" />
@@ -28,7 +28,7 @@
       <Circle fx:id="Incircle" fill="BLACK" layoutX="522.0" layoutY="258.0" radius="76.0" stroke="#fffefe" strokeType="INSIDE" />
       <ImageView fx:id="Star" fitHeight="63.0" fitWidth="105.0" layoutX="488.0" layoutY="227.0" onMouseClicked="#openPauseMenu" onMouseEntered="#flippause" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/star.png" />
+            <Image url="@../assets/star.png" />
          </image>
       </ImageView>
    </children>
