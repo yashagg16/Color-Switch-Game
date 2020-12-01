@@ -120,7 +120,7 @@ public class Gameplay  extends Application {
         });
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {
-            // double dx = 1; //Step on y or velocity
+
 
 
             @Override
