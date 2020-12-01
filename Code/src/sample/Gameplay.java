@@ -52,8 +52,10 @@ public class Gameplay  extends Application {
     private Group Obstacle;
     private double dx;
     private double balljump;
+    private boolean isplaying = false;
     @FXML
     public void initData(ActionEvent event){
+        isplaying = false;
         System.out.println("Working??");
         
         Group outerCircle = new Group(arc1, arc2, arc3, arc4,Incircle);
@@ -79,12 +81,14 @@ public class Gameplay  extends Application {
         Obstacle.setLayoutY(-400);
         dx = 3;
         balljump = ball.getLayoutY();
+
        // this.play();
        // Pane.
 
         Pane.getChildren().add(outerCircle);
         Pane.getChildren().add(star);
         Pane.getChildren().add(Obstacle);
+        ball.toFront();
 
         Pane.onKeyPressedProperty( );
         ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -93,6 +97,7 @@ public class Gameplay  extends Application {
 //                System.out.println("Code"+event.getCode());
 //                System.out.println("Text"+event.getText());
                 // System.out.println(event.);
+                isplaying = true;
                 switch (event.getCode()) {
                     case W:
                         balljump = ball.getLayoutY()-100;
@@ -121,6 +126,13 @@ public class Gameplay  extends Application {
             @Override
             public void handle(ActionEvent t) {
                 //move the ball
+                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
+                Obstacle.setLayoutY(Obstacle.getLayoutY()+2);
+
+                if(outerCircle.getLayoutY()>=900){
+                    outerCircle.setLayoutY(-150);
+                    ball.toFront();
+                }
                 ball.setLayoutY(ball.getLayoutY() + dx);
                 //If the ball reaches the left or right border make the step negative
                 //If the ball reaches the bottom or top border make the step negative
