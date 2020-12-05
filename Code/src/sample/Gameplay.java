@@ -134,6 +134,36 @@ public class Gameplay  extends Application {
                     ball.toFront();
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
+                //Checking if ball touches any star
+               if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
+                    System.out.println("Hell yeah");
+                    Star.setLayoutY((Star.getLayoutY()+150)%600);
+                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
+                }
+                //Detecting collision with obstacle
+                if(outerCircle.getBoundsInParent().intersects(ball.getBoundsInParent())){
+                    System.out.println("Here ");
+                    if(arc1.intersects(ball.getBoundsInParent()) && arc1.getStroke()!=ball.getStroke()){
+                        System.out.println("GAme Over");
+                        isplaying = false;
+
+                    }
+                    if(arc2.intersects(ball.getBoundsInParent()) && arc2.getStroke()!=ball.getStroke()){
+                        System.out.println("GAme Over");
+                        isplaying = false;
+
+                    }
+                    if(arc3.intersects(ball.getBoundsInParent()) && arc3.getStroke()!=ball.getStroke()){
+                        isplaying = false;
+
+                    }
+                    if(arc3.intersects(ball.getBoundsInParent()) && arc3.getStroke()!=ball.getStroke()){
+                        System.out.println("GAme Over");
+                        isplaying = false;
+
+                    }
+                }
+
                 //If the ball reaches the left or right border make the step negative
                 //If the ball reaches the bottom or top border make the step negative
                 if(Math.abs(dx)<1){
