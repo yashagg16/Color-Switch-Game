@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="820.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CircularObstacle">
+   <children>
+      <Group fx:id="finalObstacle" layoutX="336.0" layoutY="310.0">
+         <children>
+            <Arc fx:id = "arc_1" fill="LIME" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+            <Arc fx:id = "arc_2" fill="YELLOW" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+            <Arc fx:id = "arc_3" fill="RED" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+            <Arc fx:id = "arc_4" fill="DODGERBLUE" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+            <Circle fx:id = "inCircle" layoutX="50.0" layoutY="50.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

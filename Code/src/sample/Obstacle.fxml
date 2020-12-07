@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane fx:id="root" prefHeight="820.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Obstacle">
+   <children>
+      <Group fx:id="finalObstacle">
+         <children>
+            <Rectangle fx:id="bar1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="bar2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="30.0" layoutX="250.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="bar3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="30.0" layoutX="500.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="bar4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="30.0" layoutX="750.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

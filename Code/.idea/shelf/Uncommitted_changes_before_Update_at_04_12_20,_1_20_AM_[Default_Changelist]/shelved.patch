@@ -1,0 +1,560 @@
+Index: src/sample/Gameplay.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\n\nimport javafx.animation.AnimationTimer;\nimport javafx.animation.KeyFrame;\nimport javafx.animation.RotateTransition;\nimport javafx.animation.Timeline;\nimport javafx.application.Application;\nimport javafx.event.ActionEvent;\nimport javafx.event.Event;\nimport javafx.event.EventHandler;\nimport javafx.fxml.FXML;\nimport javafx.fxml.FXMLLoader;\nimport javafx.geometry.Bounds;\nimport javafx.scene.Group;\nimport javafx.scene.Node;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.image.ImageView;\nimport javafx.scene.input.KeyEvent;\nimport javafx.scene.input.MouseEvent;\nimport javafx.scene.layout.AnchorPane;\nimport javafx.scene.layout.Pane;\nimport javafx.scene.shape.Arc;\nimport javafx.scene.shape.Circle;\nimport javafx.scene.transform.Rotate;\nimport javafx.stage.Stage;\nimport javafx.util.Duration;\n\nimport java.io.IOException;\n\npublic class Gameplay  extends Application {\n    @FXML\n    private Pane Pane\n            ;\n    @FXML\n    private ImageView Star;\n    @FXML\n    private ImageView PauseButton_img;\n    @FXML\n    private Arc arc1;\n    @FXML\n    private Arc arc2;\n    @FXML\n    private Arc arc3;\n    @FXML\n    private Arc arc4;\n    @FXML\n    private Circle Incircle;\n    @FXML\n    private Circle ball;\n    private Group outerCircle;\n    private Group Obstacle;\n    private double dx;\n    private double balljump;\n    @FXML\n    public void initData(ActionEvent event){\n        System.out.println(\"Working??\");\n        \n        Group outerCircle = new Group(arc1, arc2, arc3, arc4,Incircle);\n       Group star = new Group(Star);\n        RotateTransition rotate = new RotateTransition();\n        RotateTransition rotate_anti = new RotateTransition();\n        rotate_anti.setAxis(Rotate.Z_AXIS);\n        rotate_anti.setFromAngle(360);\n        rotate_anti.setToAngle(0);\n        rotate.setAxis(Rotate.Z_AXIS);\n        rotate.setFromAngle(0);\n        rotate.setToAngle(360);\n        rotate_anti.setCycleCount(RotateTransition.INDEFINITE);\n        rotate.setCycleCount(RotateTransition.INDEFINITE);\n        rotate.setDuration(Duration.millis(1000));\n        rotate_anti.setDuration(Duration.millis(5000));\n        rotate.setNode(outerCircle);\n        rotate_anti.setNode(star);\n        rotate_anti.play();\n        rotate.play();\n        //outerCircle.setLayoutY(-200);\n        Obstacle = new Group(outerCircle, star);\n        Obstacle.setLayoutY(-400);\n        dx = 3;\n        balljump = ball.getLayoutY();\n       // this.play();\n       // Pane.\n\n        Pane.getChildren().add(outerCircle);\n        Pane.getChildren().add(star);\n        Pane.getChildren().add(Obstacle);\n\n        Pane.onKeyPressedProperty( );\n        ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {\n            @Override public void handle(KeyEvent event) {\n                //System.out.println(\"Chara \"+event.getCharacter());\n//                System.out.println(\"Code\"+event.getCode());\n//                System.out.println(\"Text\"+event.getText());\n                // System.out.println(event.);\n                switch (event.getCode()) {\n                    case W:\n                        balljump = ball.getLayoutY()-100;\n                        if(dx>0)\n                            dx = -5;\n                        else\n                            dx -=3;\n                        System.out.println(\"UP\"); break;\n                    case U:\n                        System.out.println(\"UP Pressed\"); break;\n                    case D:\n                        System.out.println(\"D Pressed\"); break;\n                    case R: System.out.println(\"Right\"); break;\n                    case O:  System.out.println(\"DOWN\"); break;\n                    case L:  System.out.println(\"LEFT\"); break;\n                    default:\n                        System.out.println(\"Horha h\");\n                }\n            }\n        });\n\n        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {\n            // double dx = 1; //Step on y or velocity\n\n\n            @Override\n            public void handle(ActionEvent t) {\n                //move the ball\n                ball.setLayoutY(ball.getLayoutY() + dx);\n                //If the ball reaches the left or right border make the step negative\n                //If the ball reaches the bottom or top border make the step negative\n                if(Math.abs(dx)<1){\n                    dx = 1;\n                }\n                //Add damping effect to the ball\n                if(dx>0){\n                    dx += 0.03*dx;\n                }\n                else{\n                    dx -= (0.03)*dx;\n                }\n\n            }\n        }));\n\n\n\n        timeline.setCycleCount(Timeline.INDEFINITE);\n        timeline.play();\n   }\n   @FXML\n   public void flippause(MouseEvent event) throws  IOException {\n        flipIcon(PauseButton_img);\n   }\n   private void flipIcon(ImageView Icon){\n       RotateTransition rotate = new RotateTransition();\n       rotate.setAxis(Rotate.Z_AXIS);\n       rotate.setFromAngle(0);\n       rotate.setToAngle(360);\n       rotate.setCycleCount(1);\n       rotate.setDuration(Duration.millis(1000));\n       rotate.setNode((Node)Icon);\n       rotate.play();\n   }\n\n    @FXML\n    void jump (MouseEvent event) throws  IOException {\n        ball.setCenterY(ball.getCenterY()-100);\n        System.out.println(\"Jump\");\n    }\n\n    @FXML\n    void openPauseMenu(MouseEvent event) throws IOException {\n        Parent Pause = FXMLLoader.load(getClass().getResource(\"pauseMenu.fxml\"));\n        Scene player = new Scene(Pause);\n\n\n        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();\n        window.setScene(player);\n        window.show();\n    }\n\n\n\n    @Override\n    public void start(Stage PrimaryStage) throws Exception {\n        Parent StartMenu = FXMLLoader.load(getClass().getResource(\"Gameplay.fxml\"));\n        PrimaryStage.setTitle(\"Color Switch\");\n        final Scene scene = new Scene(StartMenu);\n        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {\n            @Override\n            public void handle(KeyEvent event) {\n                System.out.println(\"Key press detected...\");\n            }\n        });\n        //Gameplay game = new Gameplay();\n\n        PrimaryStage.setScene(scene);\n        //initData();\n\n        PrimaryStage.show();\n        //initData();\n\n    }\n\n\n\n    //    scene.setOnKeyPressed(new EventHandler<KeyEvent>() {\n//        @Override\n//        public void handle(KeyEvent event) {\n//            switch (event.getCode()) {\n//                case UP:    goNorth = true; break;\n//                case DOWN:  goSouth = true; break;\n//                case LEFT:  goWest  = true; break;\n//                case RIGHT: goEast  = true; break;\n//                case SHIFT: running = true; break;\n//            }\n//        }\n//    });\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Gameplay.java b/src/sample/Gameplay.java
+--- a/src/sample/Gameplay.java	(revision 092f6fbcfac5ecc94318dc76e5016eb3ed794483)
++++ b/src/sample/Gameplay.java	(date 1606672183470)
+@@ -1,24 +1,14 @@
+ package sample;
+ 
+-import javafx.animation.AnimationTimer;
+-import javafx.animation.KeyFrame;
+ import javafx.animation.RotateTransition;
+-import javafx.animation.Timeline;
+-import javafx.application.Application;
+-import javafx.event.ActionEvent;
+-import javafx.event.Event;
+-import javafx.event.EventHandler;
+ import javafx.fxml.FXML;
+ import javafx.fxml.FXMLLoader;
+-import javafx.geometry.Bounds;
+ import javafx.scene.Group;
+ import javafx.scene.Node;
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
+ import javafx.scene.image.ImageView;
+-import javafx.scene.input.KeyEvent;
+ import javafx.scene.input.MouseEvent;
+-import javafx.scene.layout.AnchorPane;
+ import javafx.scene.layout.Pane;
+ import javafx.scene.shape.Arc;
+ import javafx.scene.shape.Circle;
+@@ -28,7 +18,7 @@
+ 
+ import java.io.IOException;
+ 
+-public class Gameplay  extends Application {
++public class Gameplay {
+     @FXML
+     private Pane Pane
+             ;
+@@ -46,17 +36,11 @@
+     private Arc arc4;
+     @FXML
+     private Circle Incircle;
++
+     @FXML
+-    private Circle ball;
+-    private Group outerCircle;
+-    private Group Obstacle;
+-    private double dx;
+-    private double balljump;
+-    @FXML
+-    public void initData(ActionEvent event){
++    public void initData(){
+         System.out.println("Working??");
+-        
+-        Group outerCircle = new Group(arc1, arc2, arc3, arc4,Incircle);
++       final Group outerCircle = new Group(arc1, arc2, arc3, arc4,Incircle);
+        Group star = new Group(Star);
+         RotateTransition rotate = new RotateTransition();
+         RotateTransition rotate_anti = new RotateTransition();
+@@ -74,74 +58,20 @@
+         rotate_anti.setNode(star);
+         rotate_anti.play();
+         rotate.play();
+-        //outerCircle.setLayoutY(-200);
+-        Obstacle = new Group(outerCircle, star);
+-        Obstacle.setLayoutY(-400);
+-        dx = 3;
+-        balljump = ball.getLayoutY();
+-       // this.play();
+        // Pane.
+ 
+         Pane.getChildren().add(outerCircle);
+         Pane.getChildren().add(star);
+-        Pane.getChildren().add(Obstacle);
+-
+-        Pane.onKeyPressedProperty( );
+-        ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+-            @Override public void handle(KeyEvent event) {
+-                //System.out.println("Chara "+event.getCharacter());
+-//                System.out.println("Code"+event.getCode());
+-//                System.out.println("Text"+event.getText());
+-                // System.out.println(event.);
+-                switch (event.getCode()) {
+-                    case W:
+-                        balljump = ball.getLayoutY()-100;
+-                        if(dx>0)
+-                            dx = -5;
+-                        else
+-                            dx -=3;
+-                        System.out.println("UP"); break;
+-                    case U:
+-                        System.out.println("UP Pressed"); break;
+-                    case D:
+-                        System.out.println("D Pressed"); break;
+-                    case R: System.out.println("Right"); break;
+-                    case O:  System.out.println("DOWN"); break;
+-                    case L:  System.out.println("LEFT"); break;
+-                    default:
+-                        System.out.println("Horha h");
+-                }
+-            }
+-        });
+-
+-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {
+-            // double dx = 1; //Step on y or velocity
+-
+-
+-            @Override
+-            public void handle(ActionEvent t) {
+-                //move the ball
+-                ball.setLayoutY(ball.getLayoutY() + dx);
+-                //If the ball reaches the left or right border make the step negative
+-                //If the ball reaches the bottom or top border make the step negative
+-                if(Math.abs(dx)<1){
+-                    dx = 1;
+-                }
+-                //Add damping effect to the ball
+-                if(dx>0){
+-                    dx += 0.03*dx;
+-                }
+-                else{
+-                    dx -= (0.03)*dx;
+-                }
+-
+-            }
+-        }));
+-
+-
+-
+-        timeline.setCycleCount(Timeline.INDEFINITE);
+-        timeline.play();
++//        RotateTransition rotate = new RotateTransition();
++//        rotate.setAxis(Rotate.Z_AXIS);
++//        rotate.setFromAngle(0);
++//        rotate.setToAngle(360);
++//        rotate.setCycleCount(1);
++//        rotate.setDuration(Duration.millis(1000));
++//        rotate.setNode((Node)outerCircle);
++//        rotate.play();
++//
++//
+    }
+    @FXML
+    public void flippause(MouseEvent event) throws  IOException {
+@@ -159,8 +89,7 @@
+    }
+ 
+     @FXML
+-    void jump (MouseEvent event) throws  IOException {
+-        ball.setCenterY(ball.getCenterY()-100);
++    void jump(){
+         System.out.println("Jump");
+     }
+ 
+@@ -174,33 +103,7 @@
+         window.setScene(player);
+         window.show();
+     }
+-
+-
+-
+-    @Override
+-    public void start(Stage PrimaryStage) throws Exception {
+-        Parent StartMenu = FXMLLoader.load(getClass().getResource("Gameplay.fxml"));
+-        PrimaryStage.setTitle("Color Switch");
+-        final Scene scene = new Scene(StartMenu);
+-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+-            @Override
+-            public void handle(KeyEvent event) {
+-                System.out.println("Key press detected...");
+-            }
+-        });
+-        //Gameplay game = new Gameplay();
+-
+-        PrimaryStage.setScene(scene);
+-        //initData();
+-
+-        PrimaryStage.show();
+-        //initData();
+-
+-    }
+-
+-
+-
+-    //    scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
++//    scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+ //        @Override
+ //        public void handle(KeyEvent event) {
+ //            switch (event.getCode()) {
+Index: src/sample/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sample;\n\nimport javafx.animation.PauseTransition;\nimport javafx.animation.RotateTransition;\nimport javafx.application.Application;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.control.Button;\nimport javafx.scene.layout.StackPane;\nimport javafx.scene.shape.Arc;\nimport javafx.scene.shape.ArcType;\nimport javafx.scene.transform.Rotate;\nimport javafx.stage.Stage;\nimport javafx.scene.Group;\nimport javafx.scene.paint.Color;\nimport javafx.scene.shape.Circle;\nimport javafx.scene.text.Font;\nimport javafx.scene.text.Text;\nimport javafx.util.Duration;\n\nimport java.io.IOException;\nimport java.util.Date;\nimport java.util.concurrent.TimeUnit;\n\npublic class Main extends Application {\n\n    public static void makeArc(Arc arc, double centerX, double centerY, double radius, double startAngle, Color color){\n        arc.setType(ArcType.ROUND);\n        arc.setCenterX(centerX);\n        arc.setCenterY(centerY);\n        arc.setRadiusX(radius);\n        arc.setRadiusY(radius);\n        arc.setStartAngle(startAngle);\n        arc.setLength(90);\n        arc.setFill(color);\n    }\n    @Override\n    public void start(Stage primaryStage) throws Exception{\n        primaryStage.setTitle(\"Color Switch\");\n\n        //Creating the color switch logo\n        Arc arc1 = new Arc();\n        Arc arc2 = new Arc();\n        Arc arc3 = new Arc();\n        Arc arc4 = new Arc();\n        makeArc(arc1, 512, 410, 100, 0, Color.RED);\n        makeArc(arc2, 512, 410, 100, 90, Color.GREEN);\n        makeArc(arc3, 512, 410, 100, 180, Color.YELLOW);\n        makeArc(arc4, 512, 410, 100, 270, Color.BLUE);\n\n        //grouping all the arcs together for the outside arcs\n        final Group outerCircle = new Group(arc1, arc2, arc3, arc4);\n\n        //loading the image using the mainPage.fxml\n        Parent MainPage = FXMLLoader.load(getClass().getResource(\"Main.fxml\"));\n        MainPage.setLayoutX(415);\n        MainPage.setLayoutY(20);\n\n        //creating the rotation aspect of the program;\n        RotateTransition rotate = new RotateTransition();\n        rotate.setAxis(Rotate.Z_AXIS);\n        rotate.setFromAngle(0);\n        rotate.setToAngle(360);\n        rotate.setCycleCount(RotateTransition.INDEFINITE);\n        rotate.setDuration(Duration.millis(1000));\n        rotate.setNode(outerCircle);\n        rotate.play();\n\n        //creating the inner circle\n        final Circle circ2 = new Circle(512, 410, 80, Color.BLACK);\n\n        //adding the loading bar\n        \n        //final group to add all the elements into\n        final Group root = new Group();\n        root.getChildren().add(outerCircle);\n        root.getChildren().add(circ2);\n        root.getChildren().add(MainPage);\n\n\n        //creating the scene and adding the root to it\n        final Scene scene = new Scene(root,  1024, 820, Color.BLACK);\n\n        //display\n        primaryStage.setScene(scene);\n        primaryStage.show();\n\n        PauseTransition delay = new PauseTransition(Duration.seconds(5));\n        delay.setOnFinished( event -> {\n            try {\n                openGame(primaryStage);\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n        });\n        delay.play();\n\n    }\n\n    public static void openGame(Stage primaryStage) throws IOException {\n        StartMenu startMenu = new StartMenu();\n        startMenu.start(primaryStage);\n    }\n    public static void main(String[] args) throws InterruptedException, IOException {\n        launch(args);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Main.java b/src/sample/Main.java
+--- a/src/sample/Main.java	(revision 092f6fbcfac5ecc94318dc76e5016eb3ed794483)
++++ b/src/sample/Main.java	(date 1606672147828)
+@@ -4,9 +4,16 @@
+ import javafx.animation.RotateTransition;
+ import javafx.application.Application;
+ import javafx.fxml.FXMLLoader;
++import javafx.geometry.Insets;
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
+ import javafx.scene.control.Button;
++import javafx.scene.control.Label;
++import javafx.scene.control.ProgressBar;
++import javafx.scene.control.TextArea;
++import javafx.scene.layout.Background;
++import javafx.scene.layout.BackgroundFill;
++import javafx.scene.layout.CornerRadii;
+ import javafx.scene.layout.StackPane;
+ import javafx.scene.shape.Arc;
+ import javafx.scene.shape.ArcType;
+@@ -70,22 +77,18 @@
+         //creating the inner circle
+         final Circle circ2 = new Circle(512, 410, 80, Color.BLACK);
+ 
+-        //adding the loading bar
+-        
+         //final group to add all the elements into
+         final Group root = new Group();
+         root.getChildren().add(outerCircle);
+         root.getChildren().add(circ2);
+         root.getChildren().add(MainPage);
+ 
+-
+         //creating the scene and adding the root to it
+         final Scene scene = new Scene(root,  1024, 820, Color.BLACK);
+ 
+         //display
+         primaryStage.setScene(scene);
+         primaryStage.show();
+-
+         PauseTransition delay = new PauseTransition(Duration.seconds(5));
+         delay.setOnFinished( event -> {
+             try {
+@@ -95,7 +98,6 @@
+             }
+         });
+         delay.play();
+-
+     }
+ 
+     public static void openGame(Stage primaryStage) throws IOException {
+Index: Code.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\n    <exclude-output />\n    <content url=\"file://$MODULE_DIR$\">\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\n    </content>\n    <orderEntry type=\"jdk\" jdkName=\"11 (2)\" jdkType=\"JavaSDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" exported=\"\" name=\"javafx.web\" level=\"project\" />\n    <orderEntry type=\"library\" exported=\"\" name=\"javafx.base\" level=\"project\" />\n    <orderEntry type=\"library\" exported=\"\" name=\"lib\" level=\"project\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Code.iml b/Code.iml
+--- a/Code.iml	(revision 092f6fbcfac5ecc94318dc76e5016eb3ed794483)
++++ b/Code.iml	(date 1606672240292)
+@@ -9,6 +9,6 @@
+     <orderEntry type="sourceFolder" forTests="false" />
+     <orderEntry type="library" exported="" name="javafx.web" level="project" />
+     <orderEntry type="library" exported="" name="javafx.base" level="project" />
+-    <orderEntry type="library" exported="" name="lib" level="project" />
++    <orderEntry type="library" name="lib" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"BranchesTreeState\">\n    <expand>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </expand>\n    <select>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"BRANCH:origin/main\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </select>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"fd4f6a46-469d-4db4-98a7-1a77ded4af05\" name=\"Default Changelist\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/lib.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/libraries/lib.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Code.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Code.iml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/out/production/Code/module-info.class\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/sample/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/sample/Main.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\n  </component>\n  <component name=\"ProjectId\" id=\"1kbqwbhAH7FsiAhgkS2xQoMMBBS\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.externalResources\" />\n  </component>\n  <component name=\"RunManager\" selected=\"Application.Main\">\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"sample.Main\" />\n      <module name=\"Code\" />\n      <option name=\"VM_PARAMETERS\" value=\"--module-path $PROJECT_DIR$/../../javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"sample.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"PauseMenu\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"sample.PauseMenu\" />\n      <module name=\"Code\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"sample.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"StartMenu\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"sample.StartMenu\" />\n      <module name=\"Code\" />\n      <option name=\"VM_PARAMETERS\" value=\"--module-path home/yash/Desktop/javafx-sdk-11.0.2/lib/ --add-modules javafx.controls,javafx.fxml\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"sample.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <list>\n      <item itemvalue=\"Application.Main\" />\n      <item itemvalue=\"Application.PauseMenu\" />\n      <item itemvalue=\"Application.StartMenu\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.Main\" />\n        <item itemvalue=\"Application.StartMenu\" />\n        <item itemvalue=\"Application.PauseMenu\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"fd4f6a46-469d-4db4-98a7-1a77ded4af05\" name=\"Default Changelist\" comment=\"\" />\n      <created>1605979877494</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1605979877494</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"added some changes\">\n      <created>1605980811287</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1605980811287</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"transitioning from the Initial Page to the StartMenu done.\">\n      <created>1605983221117</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1605983221117</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"new Game Button functionality added.\">\n      <created>1605992282595</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1605992282595</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Game Icon now rotates when the mouse hovers it.\">\n      <created>1605997926898</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1605997926898</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"All icons now rotates when the mouse hovers the button.\">\n      <created>1605998961276</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1605998961276</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"6\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.History.Properties\">\n    <option name=\"COLUMN_ORDER\">\n      <list>\n        <option value=\"0\" />\n        <option value=\"2\" />\n        <option value=\"3\" />\n        <option value=\"1\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"added some changes\" />\n    <MESSAGE value=\"transitioning from the Initial Page to the StartMenu done.\" />\n    <MESSAGE value=\"new Game Button functionality added.\" />\n    <MESSAGE value=\"Game Icon now rotates when the mouse hovers it.\" />\n    <MESSAGE value=\"All icons now rotates when the mouse hovers the button.\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"\" />\n  </component>\n  <component name=\"WindowStateProjectService\">\n    <state x=\"645\" y=\"303\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1606031852811\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"645\" y=\"303\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606031852811\" />\n    <state x=\"743\" y=\"261\" width=\"424\" height=\"591\" key=\"#com.intellij.ide.macro.MacrosDialog\" timestamp=\"1606031494378\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"743\" y=\"261\" width=\"424\" height=\"591\" key=\"#com.intellij.ide.macro.MacrosDialog/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606031494378\" />\n    <state x=\"288\" y=\"262\" width=\"374\" height=\"590\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1605992078440\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"288\" y=\"262\" width=\"374\" height=\"590\" key=\"#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605992078440\" />\n    <state x=\"1600\" y=\"333\" width=\"1720\" height=\"853\" key=\"DiffContextDialog\" timestamp=\"1606032916775\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"1600\" y=\"333\" width=\"1720\" height=\"853\" key=\"DiffContextDialog/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606032916775\" />\n    <state x=\"721\" y=\"311\" width=\"898\" height=\"519\" key=\"FileChooserDialogImpl\" timestamp=\"1606031676437\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"721\" y=\"311\" width=\"898\" height=\"519\" key=\"FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606031676437\" />\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1606032583620\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606032583620\" />\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.center\" timestamp=\"1606032583619\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606032583619\" />\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.left\" timestamp=\"1606032583618\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606032583618\" />\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.right\" timestamp=\"1606032583619\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"212\" key=\"GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606032583619\" />\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1605989023575\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605989023575\" />\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.center\" timestamp=\"1605989023575\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605989023575\" />\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.left\" timestamp=\"1605989023575\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605989023575\" />\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.right\" timestamp=\"1605989023575\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state width=\"1876\" height=\"341\" key=\"GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605989023575\" />\n    <state x=\"250\" y=\"196\" width=\"1041\" height=\"852\" key=\"SettingsEditor\" timestamp=\"1606031677896\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"250\" y=\"196\" width=\"1041\" height=\"852\" key=\"SettingsEditor/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606031677896\" />\n    <state x=\"555\" y=\"289\" width=\"800\" height=\"535\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1605998966741\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"555\" y=\"289\" width=\"800\" height=\"535\" key=\"Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605998966741\" />\n    <state x=\"306\" y=\"266\" width=\"902\" height=\"719\" key=\"com.intellij.javaee.MapExternalResourceDialog\" timestamp=\"1605988331433\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"306\" y=\"266\" width=\"902\" height=\"719\" key=\"com.intellij.javaee.MapExternalResourceDialog/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605988331433\" />\n    <state x=\"719\" y=\"469\" width=\"481\" height=\"175\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1606032564345\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"719\" y=\"469\" width=\"481\" height=\"175\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1606032564345\" />\n    <state x=\"472\" y=\"283\" width=\"965\" height=\"643\" key=\"com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2\" timestamp=\"1605991452656\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"472\" y=\"283\" width=\"965\" height=\"643\" key=\"com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605991452656\" />\n    <state x=\"642\" y=\"169\" width=\"635\" height=\"768\" key=\"find.popup\" timestamp=\"1605999604754\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"642\" y=\"169\" width=\"635\" height=\"768\" key=\"find.popup/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605999604754\" />\n    <state x=\"645\" y=\"312\" width=\"619\" height=\"489\" key=\"refactoring.ChangeSignatureDialog\" timestamp=\"1605997788345\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"645\" y=\"312\" width=\"619\" height=\"489\" key=\"refactoring.ChangeSignatureDialog/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605997788345\" />\n    <state x=\"1104\" y=\"252\" key=\"run.anything.popup\" timestamp=\"1605987913335\">\n      <screen x=\"0\" y=\"27\" width=\"1920\" height=\"1053\" />\n    </state>\n    <state x=\"1104\" y=\"252\" key=\"run.anything.popup/0.27.1920.1053@0.27.1920.1053\" timestamp=\"1605987913335\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\n          <option name=\"timeStamp\" value=\"3\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 092f6fbcfac5ecc94318dc76e5016eb3ed794483)
++++ b/.idea/workspace.xml	(date 1607025037797)
+@@ -19,24 +19,31 @@
+     <select>
+       <path>
+         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+-        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+       </path>
+     </select>
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Code.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Code/module-info.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Main.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="FxmlFile" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+@@ -52,13 +59,13 @@
+   <component name="PropertiesComponent">
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Assignment_2" />
+     <property name="project.structure.last.edited" value="Libraries" />
+     <property name="project.structure.proportion" value="0.15" />
+     <property name="project.structure.side.proportion" value="0.2" />
+     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
+   </component>
+-  <component name="RunManager" selected="Application.Main">
++  <component name="RunManager" selected="Application.Obstacle">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="sample.Main" />
+       <module name="Code" />
+@@ -73,6 +80,20 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="Obstacle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="sample.Obstacle" />
++      <module name="Code" />
++      <option name="VM_PARAMETERS" value="--module-path $PROJECT_DIR$/../../javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="sample.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="PauseMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="sample.PauseMenu" />
+       <module name="Code" />
+@@ -102,11 +123,13 @@
+     </configuration>
+     <list>
+       <item itemvalue="Application.Main" />
++      <item itemvalue="Application.Obstacle" />
+       <item itemvalue="Application.PauseMenu" />
+       <item itemvalue="Application.StartMenu" />
+     </list>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Obstacle" />
+         <item itemvalue="Application.Main" />
+         <item itemvalue="Application.StartMenu" />
+         <item itemvalue="Application.PauseMenu" />
+@@ -157,7 +180,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1605998961276</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="transition from the start page to the start Menu smoothened.">
++      <created>1606032959166</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1606032959166</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.History.Properties">
+@@ -181,7 +211,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="origin/main" />
++                        <option value="main" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -200,13 +230,14 @@
+     <MESSAGE value="new Game Button functionality added." />
+     <MESSAGE value="Game Icon now rotates when the mouse hovers it." />
+     <MESSAGE value="All icons now rotates when the mouse hovers the button." />
+-    <option name="LAST_COMMIT_MESSAGE" value="" />
++    <MESSAGE value="transition from the start page to the start Menu smoothened." />
++    <option name="LAST_COMMIT_MESSAGE" value="transition from the start page to the start Menu smoothened." />
+   </component>
+   <component name="WindowStateProjectService">
+-    <state x="645" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606031852811">
++    <state x="57" y="243" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606552888393">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state x="645" y="303" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1606031852811" />
++    <state x="57" y="243" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1606552888393" />
+     <state x="743" y="261" width="424" height="591" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1606031494378">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+@@ -215,30 +246,30 @@
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+     <state x="288" y="262" width="374" height="590" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1605992078440" />
+-    <state x="1600" y="333" width="1720" height="853" key="DiffContextDialog" timestamp="1606032916775">
++    <state x="155" y="27" width="1720" height="853" key="DiffContextDialog" timestamp="1606859760693">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state x="1600" y="333" width="1720" height="853" key="DiffContextDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1606032916775" />
+-    <state x="721" y="311" width="898" height="519" key="FileChooserDialogImpl" timestamp="1606031676437">
++    <state x="155" y="27" width="1720" height="853" key="DiffContextDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1606859760693" />
++    <state x="721" y="311" width="898" height="519" key="FileChooserDialogImpl" timestamp="1606810945933">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state x="721" y="311" width="898" height="519" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1606031676437" />
+-    <state width="1876" height="212" key="GridCell.Tab.0.bottom" timestamp="1606032583620">
++    <state x="721" y="311" width="898" height="519" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1606810945933" />
++    <state width="1876" height="212" key="GridCell.Tab.0.bottom" timestamp="1606859759478">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state width="1876" height="212" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1606032583620" />
+-    <state width="1876" height="212" key="GridCell.Tab.0.center" timestamp="1606032583619">
++    <state width="1876" height="212" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1606859759478" />
++    <state width="1876" height="212" key="GridCell.Tab.0.center" timestamp="1606859759478">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state width="1876" height="212" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1606032583619" />
+-    <state width="1876" height="212" key="GridCell.Tab.0.left" timestamp="1606032583618">
++    <state width="1876" height="212" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1606859759478" />
++    <state width="1876" height="212" key="GridCell.Tab.0.left" timestamp="1606859759478">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state width="1876" height="212" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1606032583618" />
+-    <state width="1876" height="212" key="GridCell.Tab.0.right" timestamp="1606032583619">
++    <state width="1876" height="212" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1606859759478" />
++    <state width="1876" height="212" key="GridCell.Tab.0.right" timestamp="1606859759478">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state width="1876" height="212" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1606032583619" />
++    <state width="1876" height="212" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1606859759478" />
+     <state width="1876" height="341" key="GridCell.Tab.1.bottom" timestamp="1605989023575">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+@@ -255,30 +286,42 @@
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+     <state width="1876" height="341" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1605989023575" />
+-    <state x="250" y="196" width="1041" height="852" key="SettingsEditor" timestamp="1606031677896">
++    <state x="187" y="117" width="1536" height="879" key="MergeDialog" timestamp="1606672183559">
++      <screen x="0" y="27" width="1920" height="1053" />
++    </state>
++    <state x="187" y="117" width="1536" height="879" key="MergeDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1606672183559" />
++    <state x="250" y="196" width="1041" height="852" key="SettingsEditor" timestamp="1606672239305">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state x="250" y="196" width="1041" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1606031677896" />
+-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605998966741">
++    <state x="250" y="196" width="1041" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1606672239305" />
++    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1606032973430">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1605998966741" />
++    <state x="555" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1606032973430" />
+     <state x="306" y="266" width="902" height="719" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1605988331433">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+     <state x="306" y="266" width="902" height="719" key="com.intellij.javaee.MapExternalResourceDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1605988331433" />
+-    <state x="719" y="469" width="481" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606032564345">
++    <state x="719" y="469" width="481" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606811691028">
++      <screen x="0" y="27" width="1920" height="1053" />
++    </state>
++    <state x="719" y="469" width="481" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1053@0.27.1920.1053" timestamp="1606811691028" />
++    <state x="472" y="283" width="965" height="643" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606549826010">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state x="719" y="469" width="481" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1920.1053@0.27.1920.1053" timestamp="1606032564345" />
+-    <state x="472" y="283" width="965" height="643" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1605991452656">
++    <state x="472" y="283" width="965" height="643" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.27.1920.1053@0.27.1920.1053" timestamp="1606549826010" />
++    <state x="0" y="308" width="1876" height="772" key="dock-window-1" timestamp="1606564600353">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+-    <state x="472" y="283" width="965" height="643" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.27.1920.1053@0.27.1920.1053" timestamp="1605991452656" />
++    <state x="0" y="308" width="1876" height="772" key="dock-window-1/0.27.1920.1053@0.27.1920.1053" timestamp="1606564600353" />
+     <state x="642" y="169" width="635" height="768" key="find.popup" timestamp="1605999604754">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+     <state x="642" y="169" width="635" height="768" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1605999604754" />
++    <state x="554" y="258" width="802" height="598" key="new project wizard" timestamp="1606810934908">
++      <screen x="0" y="27" width="1920" height="1053" />
++    </state>
++    <state x="554" y="258" width="802" height="598" key="new project wizard/0.27.1920.1053@0.27.1920.1053" timestamp="1606810934908" />
+     <state x="645" y="312" width="619" height="489" key="refactoring.ChangeSignatureDialog" timestamp="1605997788345">
+       <screen x="0" y="27" width="1920" height="1053" />
+     </state>
+@@ -298,4 +341,9 @@
+       </breakpoints>
+     </breakpoint-manager>
+   </component>
++  <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/Code$Obstacle.ic" NAME="Obstacle Coverage Results" MODIFIED="1606803054075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
++      <FILTER>sample.*</FILTER>
++    </SUITE>
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/sample/Gameplay.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.image.Image?>\n<?import javafx.scene.image.ImageView?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.shape.Arc?>\n<?import javafx.scene.shape.Circle?>\n<?import javafx.scene.text.Font?>\n\n<AnchorPane fx:id=\"Pane\" prefHeight=\"600.0\" prefWidth=\"1024.0\" style=\"-fx-background-color: BLACK;\" xmlns=\"http://javafx.com/javafx/11.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"sample.Gameplay\">\n   <children>\n      <Circle fx:id=\"ball\" fill=\"DODGERBLUE\" layoutX=\"522.0\" layoutY=\"478.0\" radius=\"28.0\" stroke=\"BLACK\" strokeType=\"INSIDE\" />\n      <Label fx:id=\"ScoreLabel\" alignment=\"CENTER\" layoutX=\"935.0\" layoutY=\"48.0\" text=\"00\" textFill=\"#ebe3e3\" />\n      <Label alignment=\"CENTER\" layoutX=\"884.0\" prefHeight=\"56.0\" prefWidth=\"119.0\" text=\"Score:\" textAlignment=\"CENTER\" textFill=\"#fafafa\" wrapText=\"true\">\n         <font>\n            <Font name=\"SansSerif Regular\" size=\"25.0\" />\n         </font></Label>\n      <ImageView fx:id=\"PauseButton_img\" fitHeight=\"63.0\" fitWidth=\"105.0\" onMouseClicked=\"#openPauseMenu\" onMouseEntered=\"#flippause\" pickOnBounds=\"true\" preserveRatio=\"true\" translateZ=\"1.0\">\n         <image>\n            <Image url=\"@../assets/pause.png\" />\n         </image>\n      </ImageView>\n      <Arc fx:id=\"arc1\" centerX=\"512.0\" centerY=\"250.0\" fill=\"DODGERBLUE\" layoutX=\"10.0\" layoutY=\"8.0\" length=\"90.0\" radiusX=\"100.0\" radiusY=\"100.0\" startAngle=\"90.0\" stroke=\"#f8f6f6\" strokeType=\"INSIDE\" type=\"ROUND\" />\n      <Arc fx:id=\"arc2\" centerX=\"512.0\" centerY=\"250.0\" fill=\"LIME\" layoutX=\"110.0\" layoutY=\"8.0\" length=\"90.0\" radiusX=\"100.0\" radiusY=\"100.0\" rotate=\"90.0\" startAngle=\"90.0\" stroke=\"#f5f3f3\" strokeType=\"INSIDE\" type=\"ROUND\" />\n      <Arc fx:id=\"arc3\" centerX=\"512.0\" centerY=\"250.0\" fill=\"#ff1f1f\" layoutX=\"10.0\" layoutY=\"8.0\" length=\"90.0\" radiusX=\"100.0\" radiusY=\"100.0\" startAngle=\"180.0\" stroke=\"#f5f4f4\" strokeType=\"INSIDE\" type=\"ROUND\" />\n      <Arc fx:id=\"arc4\" centerX=\"512.0\" centerY=\"250.0\" fill=\"#f100ff\" layoutX=\"110.0\" layoutY=\"108.0\" length=\"90.0\" radiusX=\"100.0\" radiusY=\"100.0\" rotate=\"180.0\" startAngle=\"90.0\" stroke=\"#fcf8f8\" strokeType=\"INSIDE\" type=\"ROUND\" />\n      <Circle fx:id=\"Incircle\" fill=\"BLACK\" layoutX=\"522.0\" layoutY=\"258.0\" radius=\"76.0\" stroke=\"#fffefe\" strokeType=\"INSIDE\" />\n      <ImageView fx:id=\"Star\" fitHeight=\"63.0\" fitWidth=\"105.0\" layoutX=\"488.0\" layoutY=\"227.0\" onMouseClicked=\"#openPauseMenu\" onMouseEntered=\"#flippause\" pickOnBounds=\"true\" preserveRatio=\"true\">\n         <image>\n            <Image url=\"@../assets/star.png\" />\n         </image>\n      </ImageView>\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Gameplay.fxml b/src/sample/Gameplay.fxml
+--- a/src/sample/Gameplay.fxml	(revision 092f6fbcfac5ecc94318dc76e5016eb3ed794483)
++++ b/src/sample/Gameplay.fxml	(date 1606672183558)
+@@ -1,14 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+-<?import javafx.scene.control.Label?>
+-<?import javafx.scene.image.Image?>
+-<?import javafx.scene.image.ImageView?>
+-<?import javafx.scene.layout.AnchorPane?>
+-<?import javafx.scene.shape.Arc?>
+-<?import javafx.scene.shape.Circle?>
+-<?import javafx.scene.text.Font?>
++<?import javafx.scene.control.*?>
++<?import javafx.scene.image.*?>
++<?import javafx.scene.layout.*?>
++<?import javafx.scene.shape.*?>
++<?import javafx.scene.text.*?>
+ 
+-<AnchorPane fx:id="Pane" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Gameplay">
++<AnchorPane fx:id="Pane" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Gameplay">
+    <children>
+       <Circle fx:id="ball" fill="DODGERBLUE" layoutX="522.0" layoutY="478.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+       <Label fx:id="ScoreLabel" alignment="CENTER" layoutX="935.0" layoutY="48.0" text="00" textFill="#ebe3e3" />
+@@ -23,8 +21,8 @@
+       </ImageView>
+       <Arc fx:id="arc1" centerX="512.0" centerY="250.0" fill="DODGERBLUE" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#f8f6f6" strokeType="INSIDE" type="ROUND" />
+       <Arc fx:id="arc2" centerX="512.0" centerY="250.0" fill="LIME" layoutX="110.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" rotate="90.0" startAngle="90.0" stroke="#f5f3f3" strokeType="INSIDE" type="ROUND" />
+-      <Arc fx:id="arc3" centerX="512.0" centerY="250.0" fill="#ff1f1f" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#f5f4f4" strokeType="INSIDE" type="ROUND" />
+-      <Arc fx:id="arc4" centerX="512.0" centerY="250.0" fill="#f100ff" layoutX="110.0" layoutY="108.0" length="90.0" radiusX="100.0" radiusY="100.0" rotate="180.0" startAngle="90.0" stroke="#fcf8f8" strokeType="INSIDE" type="ROUND" />
++      <Arc fx:id="arc3" centerX="512.0" centerY="250.0" fill="RED" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#f5f4f4" strokeType="INSIDE" type="ROUND" />
++      <Arc fx:id="arc4" centerX="512.0" centerY="250.0" fill="YELLOW" layoutX="110.0" layoutY="108.0" length="90.0" radiusX="100.0" radiusY="100.0" rotate="180.0" startAngle="90.0" stroke="#fcf8f8" strokeType="INSIDE" type="ROUND" />
+       <Circle fx:id="Incircle" fill="BLACK" layoutX="522.0" layoutY="258.0" radius="76.0" stroke="#fffefe" strokeType="INSIDE" />
+       <ImageView fx:id="Star" fitHeight="63.0" fitWidth="105.0" layoutX="488.0" layoutY="227.0" onMouseClicked="#openPauseMenu" onMouseEntered="#flippause" pickOnBounds="true" preserveRatio="true">
+          <image>

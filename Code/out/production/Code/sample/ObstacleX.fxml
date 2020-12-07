@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="820.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ObstacleX">
+   <children>
+      <Group fx:id="finalObstacle" layoutX="46.0" layoutY="162.0">
+         <children>
+            <Group fx:id="obstacle_x">
+               <children>
+                  <Rectangle fx:id = "rect_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="22.0" layoutX="224.0" layoutY="190.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="224.0" />
+                  <Rectangle fx:id = "rect_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="22.0" layoutY="190.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="224.0" />
+                  <Rectangle fx:id = "rect_3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="190.0" layoutX="213.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="22.0" />
+                  <Rectangle fx:id = "rect_4" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="190.0" layoutX="213.0" layoutY="212.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="22.0" />
+               </children>
+            </Group>
+            <Group fx:id="obstacle_x1" layoutX="448.0">
+               <children>
+                  <Rectangle fx:id = "rect_5" arcHeight="5.0" arcWidth="5.0" fill="RED" height="22.0" layoutX="224.0" layoutY="190.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="224.0" />
+                  <Rectangle fx:id = "rect_6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="190.0" layoutX="213.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="22.0" />
+                  <Rectangle fx:id = "rect_7" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="22.0" layoutY="190.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="224.0" />
+                  <Rectangle fx:id = "rect_8" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="190.0" layoutX="213.0" layoutY="212.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" width="22.0" />
+               </children>
+            </Group>
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
