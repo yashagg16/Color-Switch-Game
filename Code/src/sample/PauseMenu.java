@@ -27,7 +27,7 @@ public class PauseMenu  extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gameplay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         Gameplay controller = fxmlLoader.getController();
-        controller.initData();
+        controller.initData(event);
         GamePlayRoot.getChildren().setAll(pane);
         //GamePlayController controller = fxmlLoader.<GamePlayController>getController();
 
@@ -49,7 +49,7 @@ public class PauseMenu  extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gameplay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         Gameplay controller = fxmlLoader.getController();
-        controller.initData();
+        controller.initData(event);
         GamePlayRoot.getChildren().setAll(pane);
 //        Parent Enterplayername = FXMLLoader.load(getClass().getResource("Gameplay.fxml"));
 //        Scene playername = new Scene(Enterplayername);

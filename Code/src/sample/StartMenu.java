@@ -40,7 +40,7 @@ public class StartMenu extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gameplay.fxml"));
         AnchorPane pane=fxmlLoader.load();
         Gameplay controller = fxmlLoader.getController();
-        controller.initData();
+        controller.initData(event);
         startMenuScreen.getChildren().setAll(pane);
 //        Gameplay Gameplay = new Gameplay();
 //        Stage newStage = new Stage();

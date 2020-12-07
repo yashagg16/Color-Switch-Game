@@ -1,16 +1,13 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -18,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
@@ -27,6 +23,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+
+import static javafx.application.Platform.exit;
 
 public class Gameplay  extends Application {
     @FXML
@@ -37,59 +38,70 @@ public class Gameplay  extends Application {
     @FXML
     private ImageView PauseButton_img;
     @FXML
-    private Arc arc1;
-    @FXML
-    private Arc arc2;
-    @FXML
-    private Arc arc3;
-    @FXML
-    private Arc arc4;
-    @FXML
-    private Circle Incircle;
-    @FXML
     private Circle ball;
     private Group outerCircle;
+    private Group obstacleOnScreen;
+    private Obstacle obstacleOnTop;
+    private Obstacle obstacleToCome;
     private Group Obstacle;
     private double dx;
     private double balljump;
+    private Queue<Obstacle> obstacleQueue = new LinkedList<>();
     private boolean isplaying = false;
+    public FXMLLoader loadTheLoader(String name) throws IOException {
+        return new FXMLLoader(getClass().getResource(name));
+    }
+    public void getNewObstacle() throws IOException {
+
+        obstacleQueue.add(obstacleOnTop);
+        obstacleOnTop = obstacleQueue.poll();
+    }
     @FXML
-    public void initData(ActionEvent event){
+    public void initData(ActionEvent event) throws IOException {
         isplaying = false;
         System.out.println("Working??");
-        
-        Group outerCircle = new Group(arc1, arc2, arc3, arc4,Incircle);
-       Group star = new Group(Star);
-        RotateTransition rotate = new RotateTransition();
-        RotateTransition rotate_anti = new RotateTransition();
-        rotate_anti.setAxis(Rotate.Z_AXIS);
-        rotate_anti.setFromAngle(360);
-        rotate_anti.setToAngle(0);
-        rotate.setAxis(Rotate.Z_AXIS);
-        rotate.setFromAngle(0);
-        rotate.setToAngle(360);
-        rotate_anti.setCycleCount(RotateTransition.INDEFINITE);
-        rotate.setCycleCount(RotateTransition.INDEFINITE);
-        rotate.setDuration(Duration.millis(1000));
-        rotate_anti.setDuration(Duration.millis(5000));
-        rotate.setNode(outerCircle);
-        rotate_anti.setNode(star);
-        rotate_anti.play();
-        rotate.play();
-        //outerCircle.setLayoutY(-200);
-        Obstacle = new Group(outerCircle, star);
-        Obstacle.setLayoutY(-400);
         dx = 3;
         balljump = ball.getLayoutY();
 
-       // this.play();
-       // Pane.
-
-        Pane.getChildren().add(outerCircle);
-        Pane.getChildren().add(star);
-        Pane.getChildren().add(Obstacle);
         ball.toFront();
 
+        Random random = new Random();
+        for(int i=0; i<10; i++){
+            int val = random.nextInt(99) + 1;
+            if(val%3 == 0){
+                obstacleQueue.add(new Obstacle());
+            }
+            else if(val %3 == 1){
+                obstacleQueue.add(new ObstacleX());
+            }
+            else if(val % 3 == 2){
+                obstacleQueue.add(new CircularObstacle());
+            }
+        }
+        obstacleOnTop = obstacleQueue.poll();
+        FXMLLoader loader ;
+        if(obstacleOnTop instanceof ObstacleX){
+            loader = loadTheLoader("ObstacleX.fxml");
+        }
+        else if(obstacleOnTop instanceof CircularObstacle){
+            loader = loadTheLoader("CircularObstacle.fxml");
+        }
+        else{
+            loader = loadTheLoader("Obstacle.fxml");
+        }
+        loader.load();
+        obstacleOnTop = loader.getController();
+        obstacleToCome = obstacleQueue.peek();
+        obstacleOnScreen = obstacleOnTop.getObstacle();
+        if(obstacleOnScreen == null){
+            System.out.println("Nahi hua nahi hua");
+            exit();
+        }
+        else{
+            System.out.println("AA GAYA");
+        }
+        obstacleOnScreen.setLayoutY(0);
+        Pane.getChildren().add(obstacleOnScreen);
         Pane.onKeyPressedProperty( );
         ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override public void handle(KeyEvent event) {
@@ -101,6 +113,7 @@ public class Gameplay  extends Application {
                 switch (event.getCode()) {
                     case W:
                         balljump = ball.getLayoutY()-100;
+                        Pane.setLayoutY(Pane.getLayoutY() +2);
                         if(dx>0)
                             dx = -5;
                         else
@@ -119,6 +132,7 @@ public class Gameplay  extends Application {
             }
         });
 
+        sample.Obstacle finalObstacleOnTop = obstacleOnTop;
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {
 
 
@@ -126,44 +140,35 @@ public class Gameplay  extends Application {
             @Override
             public void handle(ActionEvent t) {
                 //move the ball
-                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
-                Obstacle.setLayoutY(Obstacle.getLayoutY()+2);
+//                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
 
-                if(outerCircle.getLayoutY()>=900){
-                    outerCircle.setLayoutY(-150);
+                if(obstacleOnScreen.getLayoutY()>=900){
                     ball.toFront();
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
                 //Checking if ball touches any star
-               if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
-                    System.out.println("Hell yeah");
-                    Star.setLayoutY((Star.getLayoutY()+150)%600);
-                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
-                }
+//                if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
+//                    System.out.println("Hell yeah");
+//                    Star.setLayoutY((Star.getLayoutY()+150)%600);
+////                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
+//                }
                 //Detecting collision with obstacle
-                if(outerCircle.getBoundsInParent().intersects(ball.getBoundsInParent())){
+                if(obstacleOnScreen.getBoundsInParent().intersects(ball.getBoundsInParent())){
                     System.out.println("Here ");
-                    if(arc1.intersects(ball.getBoundsInParent()) && arc1.getStroke()!=ball.getStroke()){
-                        System.out.println("GAme Over");
+                    if(finalObstacleOnTop.intersectsWrongColour(ball)){
+                        System.out.println("Game Over Ho Gaya");
                         isplaying = false;
-
-                    }
-                    if(arc2.intersects(ball.getBoundsInParent()) && arc2.getStroke()!=ball.getStroke()){
-                        System.out.println("GAme Over");
-                        isplaying = false;
-
-                    }
-                    if(arc3.intersects(ball.getBoundsInParent()) && arc3.getStroke()!=ball.getStroke()){
-                        isplaying = false;
-
-                    }
-                    if(arc3.intersects(ball.getBoundsInParent()) && arc3.getStroke()!=ball.getStroke()){
-                        System.out.println("GAme Over");
-                        isplaying = false;
-
                     }
                 }
 
+
+                if(obstacleOnScreen.getLayoutY() > 1024) {
+                    try {
+                        getNewObstacle();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 //If the ball reaches the left or right border make the step negative
                 //If the ball reaches the bottom or top border make the step negative
                 if(Math.abs(dx)<1){
@@ -184,21 +189,21 @@ public class Gameplay  extends Application {
 
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-   }
-   @FXML
-   public void flippause(MouseEvent event) throws  IOException {
+    }
+    @FXML
+    public void flippause(MouseEvent event) throws  IOException {
         flipIcon(PauseButton_img);
-   }
-   private void flipIcon(ImageView Icon){
-       RotateTransition rotate = new RotateTransition();
-       rotate.setAxis(Rotate.Z_AXIS);
-       rotate.setFromAngle(0);
-       rotate.setToAngle(360);
-       rotate.setCycleCount(1);
-       rotate.setDuration(Duration.millis(1000));
-       rotate.setNode((Node)Icon);
-       rotate.play();
-   }
+    }
+    private void flipIcon(ImageView Icon){
+        RotateTransition rotate = new RotateTransition();
+        rotate.setAxis(Rotate.Z_AXIS);
+        rotate.setFromAngle(0);
+        rotate.setToAngle(360);
+        rotate.setCycleCount(1);
+        rotate.setDuration(Duration.millis(1000));
+        rotate.setNode((Node)Icon);
+        rotate.play();
+    }
 
     @FXML
     void jump (MouseEvent event) throws  IOException {

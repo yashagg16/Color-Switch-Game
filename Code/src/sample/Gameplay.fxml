@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Arc?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="Pane" prefHeight="800.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Gameplay">
    <children>
@@ -19,16 +17,6 @@
       <ImageView fx:id="PauseButton_img" fitHeight="63.0" fitWidth="105.0" onMouseClicked="#openPauseMenu" onMouseEntered="#flippause" pickOnBounds="true" preserveRatio="true" translateZ="1.0">
          <image>
             <Image url="@../assets/pause.png" />
-         </image>
-      </ImageView>
-      <Arc fx:id="arc1" centerX="512.0" centerY="250.0" fill="DODGERBLUE" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#f8f6f6" strokeType="INSIDE" type="ROUND" />
-      <Arc fx:id="arc2" centerX="512.0" centerY="250.0" fill="LIME" layoutX="110.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" rotate="90.0" startAngle="90.0" stroke="#f5f3f3" strokeType="INSIDE" type="ROUND" />
-      <Arc fx:id="arc3" centerX="512.0" centerY="250.0" fill="#ff1f1f" layoutX="10.0" layoutY="8.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#f5f4f4" strokeType="INSIDE" type="ROUND" />
-      <Arc fx:id="arc4" centerX="512.0" centerY="250.0" fill="#f100ff" layoutX="110.0" layoutY="108.0" length="90.0" radiusX="100.0" radiusY="100.0" rotate="180.0" startAngle="90.0" stroke="#fcf8f8" strokeType="INSIDE" type="ROUND" />
-      <Circle fx:id="Incircle" fill="BLACK" layoutX="522.0" layoutY="258.0" radius="76.0" stroke="#fffefe" strokeType="INSIDE" />
-      <ImageView fx:id="Star" fitHeight="63.0" fitWidth="105.0" layoutX="488.0" layoutY="227.0" onMouseClicked="#openPauseMenu" onMouseEntered="#flippause" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/star.png" />
          </image>
       </ImageView>
    </children>

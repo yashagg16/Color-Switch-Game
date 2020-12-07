@@ -4,9 +4,16 @@ import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
@@ -70,14 +77,11 @@ public class Main extends Application {
         //creating the inner circle
         final Circle circ2 = new Circle(512, 410, 80, Color.BLACK);
 
-        //adding the loading bar
-        
         //final group to add all the elements into
         final Group root = new Group();
         root.getChildren().add(outerCircle);
         root.getChildren().add(circ2);
         root.getChildren().add(MainPage);
-
 
         //creating the scene and adding the root to it
         final Scene scene = new Scene(root,  1024, 820, Color.BLACK);
@@ -85,7 +89,6 @@ public class Main extends Application {
         //display
         primaryStage.setScene(scene);
         primaryStage.show();
-
         PauseTransition delay = new PauseTransition(Duration.seconds(5));
         delay.setOnFinished( event -> {
             try {
@@ -95,7 +98,6 @@ public class Main extends Application {
             }
         });
         delay.play();
-
     }
 
     public static void openGame(Stage primaryStage) throws IOException {
@@ -103,6 +105,7 @@ public class Main extends Application {
         startMenu.start(primaryStage);
     }
     public static void main(String[] args) throws InterruptedException, IOException {
+
         launch(args);
     }
 }
