@@ -126,14 +126,27 @@ public class Gameplay  extends Application {
             @Override
             public void handle(ActionEvent t) {
                 //move the ball
-                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
-                Obstacle.setLayoutY(Obstacle.getLayoutY()+2);
+//                 outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
+//                 Obstacle.setLayoutY(Obstacle.getLayoutY()+2);
 
                 if(outerCircle.getLayoutY()>=900){
                     outerCircle.setLayoutY(-150);
                     ball.toFront();
                 }
-                ball.setLayoutY(ball.getLayoutY() + dx);
+  //              ball.setLayoutY(ball.getLayoutY() + dx);
+                if(ball.getLayoutY()<=350){
+                    if(dx>0){
+                        ball.setLayoutY(ball.getLayoutY() + dx);
+                    }
+                    else{
+                        ball.setLayoutY(ball.getLayoutY() -1);
+                        outerCircle.setLayoutY(outerCircle.getLayoutY() -dx+1);
+                        //Star.setLayoutY(Star.getLayoutY() - dx+1);
+                    }
+                }
+                else
+                    ball.setLayoutY(ball.getLayoutY() + dx);
+                
                 //Checking if ball touches any star
                if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
                     System.out.println("Hell yeah");
