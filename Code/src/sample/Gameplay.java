@@ -41,7 +41,10 @@ public class Gameplay  extends Application {
     private Circle ball;
     private Group outerCircle;
     private Group obstacleOnScreen;
+    private Group nextObstacle;
     private Obstacle obstacleOnTop;
+    private FXMLLoader loader ;
+    private FXMLLoader loader2;
     private Obstacle obstacleToCome;
     private Group Obstacle;
     private double dx;
@@ -52,9 +55,48 @@ public class Gameplay  extends Application {
         return new FXMLLoader(getClass().getResource(name));
     }
     public void getNewObstacle() throws IOException {
-
+        double v = nextObstacle.getLayoutY();
         obstacleQueue.add(obstacleOnTop);
-        obstacleOnTop = obstacleQueue.poll();
+
+        obstacleOnTop = obstacleToCome;
+        obstacleToCome = obstacleQueue.poll();
+
+        if(obstacleOnTop instanceof ObstacleX){
+            loader = loadTheLoader("ObstacleX.fxml");
+        }
+        else if(obstacleOnTop instanceof CircularObstacle){
+            loader = loadTheLoader("CircularObstacle.fxml");
+        }
+        else{
+            loader = loadTheLoader("Obstacle.fxml");
+        }
+        loader.load();
+        if(obstacleToCome instanceof ObstacleX){
+            loader2 = loadTheLoader("ObstacleX.fxml");
+        }
+        else if(obstacleToCome instanceof CircularObstacle){
+            loader2 = loadTheLoader("CircularObstacle.fxml");
+        }
+        else{
+            loader2 = loadTheLoader("Obstacle.fxml");
+        }
+        loader2.load();
+
+        obstacleOnTop = loader.getController();
+        obstacleToCome = loader2.getController();
+
+        obstacleOnScreen = obstacleOnTop.getObstacle();
+        nextObstacle = obstacleToCome.getObstacle();
+
+        if(obstacleOnScreen == null){
+            System.out.println("Nahi hua nahi hua");
+            exit();
+        }
+        else{
+            System.out.println("AA GAYA");
+        }
+        Pane.getChildren().add(obstacleOnScreen);
+        Pane.getChildren().add(nextObstacle);
     }
     @FXML
     public void initData(ActionEvent event) throws IOException {
@@ -79,7 +121,7 @@ public class Gameplay  extends Application {
             }
         }
         obstacleOnTop = obstacleQueue.poll();
-        FXMLLoader loader ;
+        obstacleToCome = obstacleQueue.peek();
         if(obstacleOnTop instanceof ObstacleX){
             loader = loadTheLoader("ObstacleX.fxml");
         }
@@ -90,9 +132,23 @@ public class Gameplay  extends Application {
             loader = loadTheLoader("Obstacle.fxml");
         }
         loader.load();
+        if(obstacleToCome instanceof ObstacleX){
+            loader2 = loadTheLoader("ObstacleX.fxml");
+        }
+        else if(obstacleToCome instanceof CircularObstacle){
+            loader2 = loadTheLoader("CircularObstacle.fxml");
+        }
+        else{
+            loader2 = loadTheLoader("Obstacle.fxml");
+        }
+        loader2.load();
+
         obstacleOnTop = loader.getController();
-        obstacleToCome = obstacleQueue.peek();
+        obstacleToCome = loader2.getController();
+
         obstacleOnScreen = obstacleOnTop.getObstacle();
+        nextObstacle = obstacleToCome.getObstacle();
+
         if(obstacleOnScreen == null){
             System.out.println("Nahi hua nahi hua");
             exit();
@@ -100,9 +156,11 @@ public class Gameplay  extends Application {
         else{
             System.out.println("AA GAYA");
         }
-        obstacleOnScreen.setLayoutY(0);
+        obstacleOnScreen.setLayoutY(-30 );
+        nextObstacle.setLayoutY(obstacleOnScreen.getLayoutY() - 500);
         Pane.getChildren().add(obstacleOnScreen);
-        Pane.onKeyPressedProperty( );
+        Pane.getChildren().add(nextObstacle);
+        Pane.onKeyPressedProperty();
         ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override public void handle(KeyEvent event) {
                 //System.out.println("Chara "+event.getCharacter());
@@ -113,7 +171,9 @@ public class Gameplay  extends Application {
                 switch (event.getCode()) {
                     case W:
                         balljump = ball.getLayoutY()-100;
-                        Pane.setLayoutY(Pane.getLayoutY() +2);
+                        obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+100);
+                        nextObstacle.setLayoutY(nextObstacle.getLayoutY() + 100);
+                        //Pane.setLayoutY(Pane.getLayoutY() +2);
                         if(dx>0)
                             dx = -5;
                         else
@@ -141,8 +201,7 @@ public class Gameplay  extends Application {
             public void handle(ActionEvent t) {
                 //move the ball
 //                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
-
-                if(obstacleOnScreen.getLayoutY()>=900){
+                if(obstacleOnScreen.getLayoutY()>=900) {
                     ball.toFront();
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
@@ -161,14 +220,31 @@ public class Gameplay  extends Application {
                     }
                 }
 
+                if(nextObstacle.getBoundsInParent().intersects(ball.getBoundsInParent())){
+                    System.out.println("Here ");
+                    if(obstacleToCome.intersectsWrongColour(ball)){
+                        System.out.println("Game Over Ho Gaya");
+                        isplaying = false;
+                    }
+                }
 
-                if(obstacleOnScreen.getLayoutY() > 1024) {
+                if(obstacleOnScreen.getLayoutY() > 1024){
                     try {
+                        //obstacleOnScreen = obstacleToCome;
                         getNewObstacle();
+                        nextObstacle.setLayoutY(obstacleOnScreen.getLayoutY() - 500);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+//                if(nextObstacle.getLayoutY() > 1024){
+//                    try {
+//                        getNewObstacle();
+//                        nextObstacle.setLayoutY(obstacleOnScreen.getLayoutY()-500);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
                 //If the ball reaches the left or right border make the step negative
                 //If the ball reaches the bottom or top border make the step negative
                 if(Math.abs(dx)<1){

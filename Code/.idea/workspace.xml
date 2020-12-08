@@ -27,15 +27,14 @@
   <component name="ChangeListManager">
     <list default="true" id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Code.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/newG.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/newG.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/PauseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/newG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/newG.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +198,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606032959166</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added all the obstacles, made changes in gameplay, alag se banane iska folder..">
+      <created>1607335600192</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607335600192</updated>
+    </task>
+    <task id="LOCAL-00008" summary="commit changes">
+      <created>1607359959564</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607359959564</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -243,7 +256,9 @@
     <MESSAGE value="Game Icon now rotates when the mouse hovers it." />
     <MESSAGE value="All icons now rotates when the mouse hovers the button." />
     <MESSAGE value="transition from the start page to the start Menu smoothened." />
-    <option name="LAST_COMMIT_MESSAGE" value="transition from the start page to the start Menu smoothened." />
+    <MESSAGE value="added all the obstacles, made changes in gameplay, alag se banane iska folder.." />
+    <MESSAGE value="commit changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
