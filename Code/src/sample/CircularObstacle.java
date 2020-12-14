@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
@@ -52,7 +53,7 @@ public class CircularObstacle extends Obstacle{
         return finalObstacle;
     }
     @Override
-    public boolean intersectsWrongColour(Circle ball){
+    public boolean WrongIntersection(Circle ball){
         if(checkInCircle(ball)){
             return false;
         }
@@ -62,7 +63,8 @@ public class CircularObstacle extends Obstacle{
     }
 
     private boolean checkInCircle(Circle ball){
-        if(inCircle.intersects(ball.getBoundsInParent())){
+        Shape s = Shape.intersect(inCircle, ball);
+        if(s.getBoundsInParent().getWidth() != -1){
             return true;
         }
         return false;

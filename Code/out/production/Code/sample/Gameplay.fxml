@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="Pane" prefHeight="800.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Gameplay">
+<AnchorPane fx:id="Pane" prefHeight="820.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Gameplay">
    <children>
       <Circle fx:id="ball" fill="DODGERBLUE" layoutX="522.0" layoutY="478.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
       <Label fx:id="ScoreLabel" alignment="CENTER" layoutX="935.0" layoutY="48.0" text="00" textFill="#ebe3e3" />

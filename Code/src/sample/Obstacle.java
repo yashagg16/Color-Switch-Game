@@ -134,7 +134,7 @@ public class Obstacle extends Application {
         launch(args);
     }
 
-    public boolean intersectsWrongColour(Circle ball) {
+    public boolean WrongIntersection(Circle ball) {
         if(ball == null){
             System.out.println("Ball null hai");
         }
@@ -142,6 +142,30 @@ public class Obstacle extends Application {
     }
 
     protected boolean checkIntersection(Shape bar, Circle ball){
-        return bar.intersects(ball.getBoundsInParent()) && bar1.getStroke() != ball.getStroke();
+        if(bar == null){
+            System.out.println("Bar is null");
+            return false;
+        }
+        Shape s = Shape.intersect(bar, ball);
+        boolean collisionHappens;
+        boolean colorNotSame;
+        if(s.getBoundsInParent().getWidth() != -1){
+            System.out.println("Collision detected");
+            collisionHappens = true;
+        }
+        else{
+            collisionHappens = false;
+        }
+        System.out.println(bar.getFill() + " " + ball.getFill()); 
+        if(!bar.getFill().equals(ball.getFill())){
+
+            System.out.println("color is not same");
+            colorNotSame = true;
+        }
+        else{
+            colorNotSame = false;
+        }
+        return collisionHappens && colorNotSame;
     }
+
 }

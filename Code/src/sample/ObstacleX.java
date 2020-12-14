@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -71,7 +72,35 @@ public class ObstacleX extends Obstacle {
         return finalObstacle;
     }
     @Override
-    public boolean intersectsWrongColour(Circle ball){
-        return checkIntersection(rect_1, ball) || checkIntersection(rect_2, ball) || checkIntersection(rect_3, ball) || checkIntersection(rect_4, ball) || checkIntersection(rect_5, ball) || checkIntersection(rect_6, ball) || checkIntersection(rect_7, ball) || checkIntersection(rect_8, ball);
+    public boolean WrongIntersection(Circle ball){
+        System.out.println("IDHAR");
+
+        boolean result = checkIntersection(rect_1, ball) || checkIntersection(rect_2, ball) || checkIntersection(rect_3, ball) || checkIntersection(rect_4, ball) || checkIntersection(rect_5, ball) || checkIntersection(rect_6, ball) || checkIntersection(rect_7, ball) || checkIntersection(rect_8, ball);
+        System.out.println(result);
+        return result;
     }
+
+//    public boolean checkForBar(Rectangle bar, Circle ball){
+//        if(bar == null){
+//            System.out.println("O NO");
+//            return false;
+//        }
+//
+//        if(ball == null){
+//            System.out.println("Ball is null");
+//            return false;
+//        }
+//
+////        System.out.println("bar : " + bar.getFill() + " " + "ball : " + ball.getFill()) ;
+////        System.out.println("bar : " + bar.getBoundsInParent() + " ball : " + ball.getBoundsInParent());
+//        boolean fillNotSame = bar.getFill() != ball.getFill();
+//        Shape s = Shape.intersect(bar, ball);
+//        System.out.println(s.getBoundsInParent().getWidth());
+//        boolean collides = (s.getBoundsInParent().getWidth() != -1);
+////        boolean intersect = bar.getBoundsInParent().intersects(ball.getBoundsInParent());
+//        System.out.println("Fill Not Same : " + fillNotSame);
+//        System.out.println("Intersect : " + collides);
+////        return bar.getBoundsInParent().intersects(ball.getBoundsInParent()) && (!bar.getFill().equals(ball.getFill()));
+//        return fillNotSame && collides;
+//    }
 }
