@@ -12,10 +12,12 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
@@ -34,6 +36,8 @@ public class Gameplay  extends Application {
     @FXML
     private Pane Pane
             ;
+    @FXML
+    private Label ScoreLabel;
     @FXML
     private ImageView Star;
     @FXML
@@ -179,7 +183,7 @@ public class Gameplay  extends Application {
                 if(checkIntersection()){
                     System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
-                    exit();
+                    //exit();
                 }
 
                 //Detecting collision with obstacle
@@ -244,6 +248,35 @@ public class Gameplay  extends Application {
 
     @FXML
     void openPauseMenu(MouseEvent event) throws IOException {
+        int color, obstacle, x, y,score;
+        if(ball.getStroke()== Color.RED){
+            color = 1;
+        }
+        else if(ball.getStroke() == Color.BLUE){
+            color =2;
+        }
+        else if(ball.getStroke() == Color.GREEN){
+            color = 3;
+        }
+        else{
+            // Yellow
+            color = 4;
+        }
+        //default case for trying now.....
+        obstacle =1;
+        //Uncomment following if statements to make it working
+        if(obstacleOnTop instanceof ObstacleX){
+            obstacle = 1;
+        }
+        else if(obstacleOnTop instanceof CircularObstacle){
+            obstacle = 2;
+        }
+        else{
+            obstacle = 3;
+        }
+        Loader pausegame = new Loader(Integer.parseInt(ScoreLabel.getText()),color,obstacle,ball.getCenterX(),ball.getCenterY());
+        pausegame.writeOut();
+        System.out.println("Writeout completed");
         Parent Pause = FXMLLoader.load(getClass().getResource("pauseMenu.fxml"));
         Scene player = new Scene(Pause);
 
@@ -292,7 +325,7 @@ public class Gameplay  extends Application {
 //    });
     public void loadfromPause(Loader load, ActionEvent event) throws IOException{
         isplaying = false;
-        System.out.println("Working??");
+        System.out.println("Loading from the pause Menu");
         dx = 3;
         balljump = ball.getLayoutY();
         ball.toFront();
@@ -388,18 +421,18 @@ public class Gameplay  extends Application {
 //                    Star.setLayoutY((Star.getLayoutY()+150)%600);
 ////                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
 //                }
-                //Detecting collision with obstacle
+                //Detecting collision with obstaclew
                 if(obstacleOnScreen.getBoundsInParent().intersects(ball.getBoundsInParent())){
                     System.out.println("Here ");
                     //System.out.println(obstacleOnTop.intersectsWrongColour(ball));
-                    if(finalObstacleOnTop.checkCollisions(ball.getBoundsInParent())){
-                        System.out.println("BAll collided");
-                    }
-//
-                    if(finalObstacleOnTop.intersectsWrongColour(ball)){
-                        System.out.println("Game Over Ho Gaya");
-                        isplaying = false;
-                    }
+//                    if(finalObstacleOnTop.checkCollisions(ball.getBoundsInParent())){
+//                        System.out.println("BAll collided");
+//                    }
+////
+//                    if(finalObstacleOnTop.intersectsWrongColour(ball)){
+//                        System.out.println("Game Over Ho Gaya");
+//                        isplaying = false;
+//                    }
                 }
 
 

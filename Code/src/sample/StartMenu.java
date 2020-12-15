@@ -91,5 +91,13 @@ public class StartMenu extends Application {
     public static void main(String[] args){
         launch(args);
     }
+    @FXML
+    void LoadMenu(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoadMenu.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        //Gameplay controller = fxmlLoader.getController();
+        //controller.initData(event);
+        startMenuScreen.getChildren().setAll(pane);
+    }
 
 }
