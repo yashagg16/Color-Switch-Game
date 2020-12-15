@@ -26,8 +26,11 @@ public class PauseMenu  extends Application {
     void play(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gameplay.fxml"));
         AnchorPane pane=fxmlLoader.load();
+        Loader loadgame = new Loader();
+        loadgame.bringIn();
         Gameplay controller = fxmlLoader.getController();
-        controller.initData(event);
+
+        controller.loadfromPause(loadgame,event);
         GamePlayRoot.getChildren().setAll(pane);
         //GamePlayController controller = fxmlLoader.<GamePlayController>getController();
 
