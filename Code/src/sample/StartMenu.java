@@ -95,7 +95,7 @@ public class StartMenu extends Application {
     void LoadMenu(ActionEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoadMenu.fxml"));
         AnchorPane pane=fxmlLoader.load();
-        //Gameplay controller = fxmlLoader.getController();
+        Loadmenu controller = fxmlLoader.getController();
         //controller.initData(event);
         startMenuScreen.getChildren().setAll(pane);
     }

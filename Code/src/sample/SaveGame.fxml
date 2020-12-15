@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SaveGame">
+   <children>
+      <Label layoutX="341.0" layoutY="70.0" text="Save Game Menu" textFill="WHITE">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="376.0" fitWidth="405.0" layoutX="58.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/load(1).png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="name" layoutX="649.0" layoutY="221.0" />
+      <Label layoutX="562.0" layoutY="180.0" text="Enter Name of Game Player here:  " textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="612.0" layoutY="280.0" text="Select a Game to replace" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="g1" layoutX="683.0" layoutY="335.0" onMouseClicked="#Game1Clicked" text="Game 1:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="g2" layoutX="683.0" layoutY="385.0" onMouseClicked="#Game2Clicked" text="Game 2:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="g3" layoutX="683.0" layoutY="434.0" onMouseClicked="#Game3Clicked" text="Game 3:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="g4" layoutX="683.0" layoutY="485.0" onMouseClicked="#Game4Clicked" text="Game 4:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="g5" layoutX="683.0" layoutY="535.0" onMouseClicked="#Game5Clicked" text="Game 5:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

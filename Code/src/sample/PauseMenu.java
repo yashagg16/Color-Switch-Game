@@ -38,8 +38,14 @@ public class PauseMenu  extends Application {
 
     }
     @FXML
-    void save(){
+    void save(ActionEvent event) throws Exception {
         System.out.println("Save clicked");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SaveGame.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        SaveGame controller = fxmlLoader.getController();
+        controller.init(event);
+        GamePlayRoot.getChildren().setAll(pane);
+
     }
 
     @FXML
