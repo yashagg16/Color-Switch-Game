@@ -290,5 +290,148 @@ public class Gameplay  extends Application {
 //            }
 //        }
 //    });
+    public void loadfromPause(Loader load, ActionEvent event) throws IOException{
+        isplaying = false;
+        System.out.println("Working??");
+        dx = 3;
+        balljump = ball.getLayoutY();
+        ball.toFront();
+
+        int val = load.obstacle;
+        Random random = new Random();
+        for(int i =0; i<10;i++){
+            if(val%3 == 0){
+                obstacleQueue.add(new Obstacle());
+            }
+            else if(val %3 == 1){
+                obstacleQueue.add(new ObstacleX());
+            }
+            else if(val % 3 == 2){
+                obstacleQueue.add(new CircularObstacle());
+            }
+            val = random.nextInt(99)+1;
+        }
+        obstacleOnTop = obstacleQueue.poll();
+
+        if(obstacleOnTop instanceof ObstacleX){
+            loader = loadTheLoader("ObstacleX.fxml");
+        }
+        else if(obstacleOnTop instanceof CircularObstacle){
+            loader = loadTheLoader("CircularObstacle.fxml");
+        }
+        else{
+            loader = loadTheLoader("Obstacle.fxml");
+        }
+        loader.load();
+        obstacleOnTop = loader.getController();
+        obstacleToCome = obstacleQueue.peek();
+        obstacleOnScreen = obstacleOnTop.getObstacle();
+        if(obstacleOnScreen == null){
+            System.out.println("Nahi hua nahi hua");
+            exit();
+        }
+        else{
+            System.out.println("AA GAYA");
+        }
+        obstacleOnScreen.setLayoutY(0);
+        Pane.getChildren().add(obstacleOnScreen);
+        ball.toFront();
+        Pane.onKeyPressedProperty( );
+        ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override public void handle(KeyEvent event) {
+                //System.out.println("Chara "+event.getCharacter());
+//                System.out.println("Code"+event.getCode());
+//                System.out.println("Text"+event.getText());
+                // System.out.println(event.);
+                isplaying = true;
+                switch (event.getCode()) {
+                    case W:
+                        balljump = ball.getLayoutY()-100;
+                        //Pane.setLayoutY(Pane.getLayoutY() +2);
+                        if(dx>0)
+                            dx = -5;
+                        else
+                            dx -=3;
+                        System.out.println("UP"); break;
+                    case U:
+                        System.out.println("UP Pressed"); break;
+                    case D:
+                        System.out.println("D Pressed"); break;
+                    case R: System.out.println("Right"); break;
+                    case O:  System.out.println("DOWN"); break;
+                    case L:  System.out.println("LEFT"); break;
+                    default:
+                        System.out.println("Horha h");
+                }
+            }
+        });
+
+        sample.Obstacle finalObstacleOnTop = obstacleOnTop;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {
+
+
+
+            @Override
+            public void handle(ActionEvent t) {
+                //move the ball
+//                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
+                obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+2);
+                //obstacleOnTop.move(2);
+
+                if(obstacleOnScreen.getLayoutY()>=900){
+                    ball.toFront();
+                }
+                ball.setLayoutY(ball.getLayoutY() + dx);
+                //Checking if ball touches any star
+//                if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
+//                    System.out.println("Hell yeah");
+//                    Star.setLayoutY((Star.getLayoutY()+150)%600);
+////                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
+//                }
+                //Detecting collision with obstacle
+                if(obstacleOnScreen.getBoundsInParent().intersects(ball.getBoundsInParent())){
+                    System.out.println("Here ");
+                    //System.out.println(obstacleOnTop.intersectsWrongColour(ball));
+                    if(finalObstacleOnTop.checkCollisions(ball.getBoundsInParent())){
+                        System.out.println("BAll collided");
+                    }
+//
+                    if(finalObstacleOnTop.intersectsWrongColour(ball)){
+                        System.out.println("Game Over Ho Gaya");
+                        isplaying = false;
+                    }
+                }
+
+
+                if(obstacleOnScreen.getLayoutY() > 1024) {
+                    try {
+                        //obstacleOnScreen = obstacleToCome;
+                        getNewObstacle();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                //If the ball reaches the left or right border make the step negative
+                //If the ball reaches the bottom or top border make the step negative
+                if(Math.abs(dx)<1){
+                    dx = 1;
+                }
+                //Add damping effect to the ball
+                if(dx>0){
+                    dx += 0.03*dx;
+                }
+                else{
+                    dx -= (0.03)*dx;
+                }
+
+            }
+        }));
+
+
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+    }
 
 }
