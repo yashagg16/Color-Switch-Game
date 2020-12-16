@@ -1,10 +1,9 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,11 +12,13 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -46,7 +47,14 @@ public class Obstacle extends Application {
     protected Rectangle bar3;
     @FXML
     protected  Rectangle bar4;
-
+    @FXML
+    protected ImageView star_1;
+    @FXML
+    protected  ImageView star_2;
+    @FXML
+    protected ImageView star_3;
+    @FXML
+    protected ImageView star_4;
     protected double dx = 0.1;
     public void setSpeedX(){
         speedX = 100;
@@ -83,6 +91,16 @@ public class Obstacle extends Application {
 //        this.bar4 = obstacle.bar4;
 //        this.finalObstacle = obstacle.finalObstacle ;
 //    }
+    public void rotateFunction(Parent parent, int stAngle, int endAngle){
+        RotateTransition rotate = new RotateTransition();
+        rotate.setAxis(Rotate.Z_AXIS);
+        rotate.setFromAngle(stAngle);
+        rotate.setToAngle(endAngle);
+        rotate.setCycleCount(RotateTransition.INDEFINITE);
+        rotate.setDuration(Duration.millis(3000));
+        rotate.setNode(parent);
+        rotate.play();
+    }
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Obstacle.fxml"));
@@ -166,6 +184,29 @@ public class Obstacle extends Application {
             colorNotSame = false;
         }
         return collisionHappens && colorNotSame;
+    }
+
+    public int checkStars(Circle ball){
+        return starIntersects(star_1, ball) + starIntersects(star_2, ball) + starIntersects(star_3, ball) + starIntersects(star_4, ball);
+    }
+
+    protected int starIntersects(ImageView image, Circle ball){
+        if(image == null){
+            System.out.println("The image is null");
+            return 0;
+        }
+        if(ball == null){
+            System.out.println("The ball is null");
+            return 0;
+        }
+        if(ball.getBoundsInParent().intersects(image.getBoundsInParent())){
+            finalObstacle.getChildren().remove(image);
+            System.out.println("Score increased by 1");
+            return 1;
+        }
+        System.out.println("Score not increased as there is no intersection");
+//        finalObstacle.getChildren().remove(image);
+        return 0;
     }
 
 }

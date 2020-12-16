@@ -26,13 +26,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_12_20,_1_20_AM_[Default_Changelist]/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_12_20,_1_20_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_12_20__1_20_AM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_12_20,_3_23_PM_[Default_Changelist]/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_12_20,_3_23_PM_[Default_Changelist]/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_12_20,_3_23_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_12_20__3_23_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/CircularObstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/CircularObstacle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/CircularObstacle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/CircularObstacle.fxml" afterDir="false" />
@@ -41,21 +34,18 @@
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Obstacle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/ObstacleX.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/ObstacleX.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/newG$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/newG$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/newG$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/newG$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/newG.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/PauseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/PauseMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/pauseMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/pauseMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CircularObstacle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CircularObstacle.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/CircularObstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CircularObstacle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Obstacle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Obstacle.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Obstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ObstacleX.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ObstacleX.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ObstacleX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ObstacleX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/newG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/newG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/TriangularObstacle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/rectangularObstacle.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,13 +141,13 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Gameplay" />
       <item itemvalue="Application.Main (1)" />
-      <item itemvalue="Application.ObstacleX" />
+      <item itemvalue="Application.FXBounds" />
       <item itemvalue="Application.Obstacle" />
       <item itemvalue="Application.StartMenu" />
+      <item itemvalue="Application.ObstacleX" />
+      <item itemvalue="Application.Gameplay" />
       <item itemvalue="Application.test" />
-      <item itemvalue="Application.FXBounds" />
     </list>
     <recent_temporary>
       <list>
@@ -241,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607412654603</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="obstacles move in a line. &#10;The collisions are detected.">
+      <created>1607965520087</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607965520087</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -288,7 +285,8 @@
     <MESSAGE value="added all the obstacles, made changes in gameplay, alag se banane iska folder.." />
     <MESSAGE value="commit changes" />
     <MESSAGE value="changes in gamePlay" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in gamePlay" />
+    <MESSAGE value="obstacles move in a line. &#10;The collisions are detected." />
+    <option name="LAST_COMMIT_MESSAGE" value="obstacles move in a line. &#10;The collisions are detected." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

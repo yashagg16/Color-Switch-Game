@@ -67,12 +67,16 @@ public class Gameplay  extends Application {
         else if(obstacleOnTop instanceof CircularObstacle){
             loader = loadTheLoader("CircularObstacle.fxml");
         }
+        else if(obstacleOnTop instanceof rectangularObstacle){
+            loader = loadTheLoader("rectangularObstacle.fxml");
+        }
         else{
             loader = loadTheLoader("Obstacle.fxml");
         }
         loader.load();
         obstacleOnTop = loader.getController();
         obstacleToCome = obstacleQueue.peek();
+        System.out.println("ObstacleOnTop new Class :  " + obstacleOnTop.getClass().toString());
         obstacleOnScreen = obstacleOnTop.getObstacle();
         obstacleOnScreen.setLayoutY(0);
         Pane.getChildren().add(obstacleOnScreen);
@@ -80,6 +84,14 @@ public class Gameplay  extends Application {
     public boolean checkIntersection(){
         System.out.println(obstacleOnTop.getClass().toString());
         return obstacleOnTop.WrongIntersection(ball);
+    }
+    public int checkStars(){
+        int val = obstacleOnTop.checkStars(ball) ;
+        System.out.println("stars intersected : " + val);
+        return val;
+    }
+    public void increaseScore(int val){
+        ScoreLabel.setText(Integer.toString(Integer.parseInt(ScoreLabel.getText()) + val));
     }
     @FXML
     public void initData(ActionEvent event) throws IOException {
@@ -93,14 +105,17 @@ public class Gameplay  extends Application {
         Random random = new Random();
         for(int i=0; i<10; i++){
             int val = random.nextInt(99) + 1;
-            if(val%3 == 0){
+            if(val%4 == 0){
                 obstacleQueue.add(new Obstacle());
             }
-            else if(val %3 == 1){
+            else if(val %4 == 1){
                 obstacleQueue.add(new ObstacleX());
             }
-            else if(val % 3 == 2){
+            else if(val % 4 == 2){
                 obstacleQueue.add(new CircularObstacle());
+            }
+            else if(val%4 == 3){
+                obstacleQueue.add(new rectangularObstacle());
             }
         }
         obstacleOnTop = obstacleQueue.poll();
@@ -110,6 +125,9 @@ public class Gameplay  extends Application {
         }
         else if(obstacleOnTop instanceof CircularObstacle){
             loader = loadTheLoader("CircularObstacle.fxml");
+        }
+        else if(obstacleOnTop instanceof  rectangularObstacle){
+            loader = loadTheLoader("rectangularObstacle.fxml");
         }
         else{
             loader = loadTheLoader("Obstacle.fxml");
@@ -179,6 +197,7 @@ public class Gameplay  extends Application {
 ////                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
 //                }
 
+                increaseScore(checkStars());
 
                 if(checkIntersection()){
                     System.out.println("Intersection detect Ho gaya");

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -39,7 +40,14 @@ public class ObstacleX extends Obstacle {
     protected Rectangle rect_7;
     @FXML
     protected Rectangle rect_8;
-
+    @FXML
+    protected ImageView star_5;
+    @FXML
+    protected ImageView star_6;
+    @FXML
+    protected ImageView star_7;
+    @FXML
+    protected  ImageView star_8;
 //    public ObstacleX() throws IOException {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("ObstacleX.fxml"));
 //        loader.load();
@@ -56,16 +64,7 @@ public class ObstacleX extends Obstacle {
 //        this.rect_7 = obs.rect_7;
 //        this.rect_8 = obs.rect_8;
 //    }
-    public void rotateFunction(Parent parent, int stAngle, int endAngle){
-        RotateTransition rotate = new RotateTransition();
-        rotate.setAxis(Rotate.Z_AXIS);
-        rotate.setFromAngle(stAngle);
-        rotate.setToAngle(endAngle);
-        rotate.setCycleCount(RotateTransition.INDEFINITE);
-        rotate.setDuration(Duration.millis(3000));
-        rotate.setNode(parent);
-        rotate.play();
-    }
+
     public Group getObstacle() throws IOException {
         rotateFunction(obstacle_x, 0, 360);
         rotateFunction(obstacle_x1, 360, 0);
@@ -80,6 +79,10 @@ public class ObstacleX extends Obstacle {
         return result;
     }
 
+    @Override
+    public int checkStars(Circle ball){
+        return starIntersects(star_1, ball) + starIntersects(star_2, ball) + starIntersects(star_3, ball) + starIntersects(star_4, ball) + starIntersects(star_5, ball) + starIntersects(star_6, ball) + starIntersects(star_7, ball) + starIntersects(star_8, ball);
+    }
 //    public boolean checkForBar(Rectangle bar, Circle ball){
 //        if(bar == null){
 //            System.out.println("O NO");

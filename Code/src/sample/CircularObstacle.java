@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
@@ -26,6 +27,8 @@ public class CircularObstacle extends Obstacle{
     protected Arc arc_4;
     @FXML
     protected Circle inCircle;
+    @FXML
+    protected ImageView starImage;
 
 //    public CircularObstacle() throws IOException {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("CircularObstacle.fxml"));
@@ -38,18 +41,10 @@ public class CircularObstacle extends Obstacle{
 //        this.arc_4 = obs.arc_4;
 //        this.inCircle = obs.inCircle;
 //    }
-    public void rotateFunction(Parent parent, int stAngle, int endAngle){
-        RotateTransition rotate = new RotateTransition();
-        rotate.setAxis(Rotate.Z_AXIS);
-        rotate.setFromAngle(stAngle);
-        rotate.setToAngle(endAngle);
-        rotate.setCycleCount(RotateTransition.INDEFINITE);
-        rotate.setDuration(Duration.millis(3000));
-        rotate.setNode(parent);
-        rotate.play();
-    }
+
     public Group getObstacle() throws IOException {
         rotateFunction(finalObstacle, 0, 360);
+
         return finalObstacle;
     }
     @Override
@@ -60,6 +55,11 @@ public class CircularObstacle extends Obstacle{
         else{
             return checkIntersection(arc_1, ball) || checkIntersection(arc_2, ball) || checkIntersection(arc_3, ball) || checkIntersection(arc_4, ball);
         }
+    }
+
+    @Override
+    public int checkStars(Circle ball){
+        return starIntersects(star_1, ball);
     }
 
     private boolean checkInCircle(Circle ball){
