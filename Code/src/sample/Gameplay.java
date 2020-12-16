@@ -39,6 +39,8 @@ public class Gameplay  extends Application {
     @FXML
     private Label ScoreLabel;
     @FXML
+    public Label name;
+    @FXML
     private ImageView Star;
     @FXML
     private ImageView PauseButton_img;
@@ -345,6 +347,8 @@ public class Gameplay  extends Application {
     public void loadfromPause(Loader load, ActionEvent event) throws IOException{
         isplaying = false;
         System.out.println("Loading from the pause Menu");
+        ScoreLabel.setText(String.valueOf(load.score));
+        ScoreLabel.toFront();
         dx = 3;
         balljump = ball.getLayoutY();
         ball.toFront();
