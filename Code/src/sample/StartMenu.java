@@ -96,7 +96,7 @@ public class StartMenu extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoadMenu.fxml"));
         AnchorPane pane=fxmlLoader.load();
         Loadmenu controller = fxmlLoader.getController();
-        //controller.initData(event);
+        controller.init(event);
         startMenuScreen.getChildren().setAll(pane);
     }
 
