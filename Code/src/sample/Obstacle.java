@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static javafx.application.Application.launch;
+import static javafx.application.Platform.exit;
 
 public class Obstacle extends Application {
     final int LimitX = 200;
@@ -193,19 +195,20 @@ public class Obstacle extends Application {
     protected int starIntersects(ImageView image, Circle ball){
         if(image == null){
             System.out.println("The image is null");
+            exit();
             return 0;
         }
         if(ball == null){
             System.out.println("The ball is null");
             return 0;
         }
-        if(ball.getBoundsInParent().intersects(image.getBoundsInParent())){
-            finalObstacle.getChildren().remove(image);
-            System.out.println("Score increased by 1");
+        Bounds imageBounds = image.localToScene(image.getBoundsInLocal());
+        Bounds ballBounds = image.localToScene(image.getBoundsInLocal());
+//        System.out.println(imageBounds);
+//        System.out.println(ballBounds);
+        if(imageBounds.intersects(ballBounds)){
             return 1;
         }
-        System.out.println("Score not increased as there is no intersection");
-//        finalObstacle.getChildren().remove(image);
         return 0;
     }
 

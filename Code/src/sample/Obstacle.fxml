@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -13,27 +14,32 @@
             <Rectangle fx:id="bar2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="30.0" layoutX="250.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
             <Rectangle fx:id="bar3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="30.0" layoutX="500.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
             <Rectangle fx:id="bar4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="30.0" layoutX="750.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-            <ImageView fx:id = "star_1" fitHeight="76.0" fitWidth="72.0" layoutX="56.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star_2" fitHeight="76.0" fitWidth="72.0" layoutX="320.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/star.png" />
                </image>
             </ImageView>
-            <ImageView fx:id = "star_2" fitHeight="76.0" fitWidth="72.0" layoutX="320.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star_3" fitHeight="76.0" fitWidth="72.0" layoutX="564.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/star.png" />
                </image>
             </ImageView>
-            <ImageView fx:id = "star_3" fitHeight="76.0" fitWidth="72.0" layoutX="564.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star_4" fitHeight="76.0" fitWidth="72.0" layoutX="814.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/star.png" />
                </image>
             </ImageView>
-            <ImageView fx:id = "star_4" fitHeight="76.0" fitWidth="72.0" layoutX="814.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star_1" fitHeight="76.0" fitWidth="72.0" layoutX="58.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/star.png" />
                </image>
             </ImageView>
          </children>
       </Group>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="156.0" layoutX="148.0" layoutY="225.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="183.0">
+         <effect>
+            <ImageInput />
+         </effect>
+      </Rectangle>
    </children>
 </AnchorPane>

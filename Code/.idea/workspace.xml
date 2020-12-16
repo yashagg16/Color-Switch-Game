@@ -26,32 +26,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Load.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/assets/GameOver.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/assets/GameOver.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/assets/Load.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/assets/star.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/assets/star_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/GameList.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$5.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$6.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/LoadMenu.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/LoadMenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/Loader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/Loadmenu.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/SaveGame.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/SaveGame.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/games.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/newG.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/rectangularObstacle.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/rectangularObstacle.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/test$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Code/sample/test.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/star.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/star_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/newG.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/rectangularObstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/LoadMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/LoadMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/LoadMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/LoadMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Loadmenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Loadmenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Obstacle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/SaveGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/SaveGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/SaveGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/SaveGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/newG.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Obstacle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Obstacle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Obstacle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608125345477</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added star collision">
+      <created>1608125922238</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608125922238</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
