@@ -221,6 +221,7 @@ public class Gameplay  extends Application {
                     try {
                         //obstacleOnScreen = obstacleToCome;
                         getNewObstacle();
+                        ball.toFront();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -452,6 +453,7 @@ public class Gameplay  extends Application {
                     try {
                         //obstacleOnScreen = obstacleToCome;
                         getNewObstacle();
+                        ball.toFront();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
