@@ -216,16 +216,16 @@ public class Obstacle extends Application {
         boolean collisionHappens;
         boolean colorNotSame;
         if(s.getBoundsInParent().getWidth() != -1){
-            System.out.println("Collision detected");
+            //System.out.println("Collision detected");
             collisionHappens = true;
         }
         else{
             collisionHappens = false;
         }
-        System.out.println(bar.getFill() + " " + ball.getFill());
+        //System.out.println(bar.getFill() + " " + ball.getFill());
         if(!bar.getFill().equals(ball.getFill())){
 
-            System.out.println("color is not same");
+            //System.out.println("color is not same");
             colorNotSame = true;
         }
         else{
@@ -253,7 +253,7 @@ public class Obstacle extends Application {
         }
         Shape s = Shape.intersect(image, ball);
         if(s.getBoundsInParent().getWidth() != -1){
-            System.out.println("star collected");
+            //System.out.println("star collected");
             removeImage(image);
             return 1;
         }
@@ -269,7 +269,7 @@ public class Obstacle extends Application {
         }
         Shape s = Shape.intersect(ball, colorChanger);
         if(s.getBoundsInParent().getWidth() != -1){
-            System.out.println("Change Color");
+            //System.out.println("Change Color");
             ball.setFill(colorChanger.getFill());
             finalObstacle.getChildren().remove(colorChanger);
         }

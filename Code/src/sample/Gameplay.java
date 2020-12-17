@@ -84,12 +84,12 @@ public class Gameplay  extends Application {
         Pane.getChildren().add(obstacleOnScreen);
     }
     public boolean checkIntersection(){
-        System.out.println(obstacleOnTop.getClass().toString());
+        //System.out.println(obstacleOnTop.getClass().toString());
         return obstacleOnTop.WrongIntersection(ball);
     }
     public int checkStars(){
         int val = obstacleOnTop.checkStars(ball) ;
-        System.out.println("stars intersected : " + val);
+        //System.out.println("stars intersected : " + val);
         return val;
     }
     public void increaseScore(int val){
@@ -189,7 +189,7 @@ public class Gameplay  extends Application {
 //                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
                 if(ball.getLayoutY()<=400 )
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
-                if(obstacleOnScreen.getLayoutY()>=550 || obstacleOnScreen.getLayoutY()<=200){
+                if(obstacleOnScreen.getLayoutY()>=600 || obstacleOnScreen.getLayoutY()<=100){
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
@@ -203,7 +203,7 @@ public class Gameplay  extends Application {
                 increaseScore(checkStars());
                 obstacleOnTop.checkColorChanger(ball);
                 if(checkIntersection()){
-                    System.out.println("Intersection detect Ho gaya");
+                    //System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
                     exit();
                 }
