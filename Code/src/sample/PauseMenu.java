@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.javafx.application.PlatformImpl;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static javafx.application.Platform.exit;
 
 public class PauseMenu  extends Application {
     @FXML
@@ -49,8 +52,9 @@ public class PauseMenu  extends Application {
     }
 
     @FXML
-    void exit(){
+    void exit2(){
         System.out.println("Exit clicked");
+        exit();
     }
     
     @FXML

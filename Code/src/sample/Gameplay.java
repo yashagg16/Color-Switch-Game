@@ -435,7 +435,7 @@ public class Gameplay  extends Application {
 //                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
                 if(ball.getLayoutY()<=400 )
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
-                if(obstacleOnScreen.getLayoutY()>=550 || obstacleOnScreen.getLayoutY()<=200){
+                if(obstacleOnScreen.getLayoutY()>=550 || obstacleOnScreen.getLayoutY()<=100){
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
@@ -444,7 +444,7 @@ public class Gameplay  extends Application {
                 increaseScore(checkStars());
                 obstacleOnTop.checkColorChanger(ball);
                 if(checkIntersection()){
-                    System.out.println("Intersection detect Ho gaya");
+                   // System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
                     //exit();
                 }
