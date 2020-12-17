@@ -36,9 +36,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Obstacle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/ObstacleX.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/ObstacleX.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ObstacleX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ObstacleX.java" afterDir="false" />
     </list>
     <list id="fcc0142c-89e3-416d-b6d7-d7fc60f76dd8" name="Uncommitted changes before Update at 17/12/20, 5:15 PM [Default Changelist]" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +74,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../javafx-sdk-11.0.2/lib/javafx.media.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Code" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -288,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608215694354</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="more changes.">
+      <created>1608218851009</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1608218851009</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

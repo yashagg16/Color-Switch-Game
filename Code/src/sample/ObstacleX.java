@@ -85,7 +85,7 @@ public class ObstacleX extends Obstacle {
         //System.out.println("IDHAR");
 
         boolean result = checkIntersection(rect_1, ball) || checkIntersection(rect_2, ball) || checkIntersection(rect_3, ball) || checkIntersection(rect_4, ball) || checkIntersection(rect_5, ball) || checkIntersection(rect_6, ball) || checkIntersection(rect_7, ball) || checkIntersection(rect_8, ball);
-        System.out.println(result);
+//        System.out.println(result);
         return result;
     }
 

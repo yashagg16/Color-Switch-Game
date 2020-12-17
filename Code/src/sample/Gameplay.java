@@ -173,9 +173,6 @@ public class Gameplay  extends Application {
             System.out.println("Nahi hua nahi hua");
             exit();
         }
-        else{
-            System.out.println("AA GAYA");
-        }
         obstacleOnScreen.setLayoutY(-100);
         Pane.getChildren().add(obstacleOnScreen);
         ball.toFront();
@@ -197,15 +194,8 @@ public class Gameplay  extends Application {
                         else
                             dx -=3;
                         //System.out.println("UP"); break;
-                    case U:
-                        //System.out.println("UP Pressed"); break;
-                    case D:
-                        System.out.println("D Pressed"); break;
-                    case R: System.out.println("Right"); break;
-                    case O:  System.out.println("DOWN"); break;
-                    case L:  System.out.println("LEFT"); break;
                     default:
-                        System.out.println("Horha h");
+                        System.out.println("Random key pressed");
                 }
             }
         });
@@ -263,9 +253,10 @@ public class Gameplay  extends Application {
 //                }
 
 
-                if(obstacleOnScreen.getLayoutY() > 1024) {
+                if(obstacleOnScreen.getLayoutY() > 800) {
                     try {
-                        //obstacleOnScreen = obstacleToCome;
+                        //obstacleOnScreen = obstacleToCome
+                        obstacleOnScreen.setLayoutY(1024);
                         getNewObstacle();
                         ball.toFront();
                     } catch (IOException e) {
@@ -317,13 +308,13 @@ public class Gameplay  extends Application {
     @FXML
     void openPauseMenu(MouseEvent event) throws IOException {
         int color, obstacle, x, y,score;
-        if(ball.getStroke()== Color.RED){
+        if(ball.getFill()== Color.RED){
             color = 1;
         }
-        else if(ball.getStroke() == Color.BLUE){
+        else if(ball.getFill() == Color.DODGERBLUE){
             color =2;
         }
-        else if(ball.getStroke() == Color.GREEN){
+        else if(ball.getFill() == Color.LIME){
             color = 3;
         }
         else{
@@ -404,6 +395,19 @@ public class Gameplay  extends Application {
         balljump = ball.getLayoutY();
         ball.toFront();
 
+        int color = load.color;
+        if(color == 1){
+            ball.setFill(Color.RED);
+        }
+        else if(color==2){
+            ball.setFill(Color.DODGERBLUE);
+        }
+        else if(color ==3){
+            ball.setFill(Color.LIME);
+        }
+        else{
+            ball.setFill(Color.YELLOW);
+        }
         int val = load.obstacle;
         Random random = new Random();
         for(int i =0; i<10;i++){
@@ -464,15 +468,8 @@ public class Gameplay  extends Application {
                         else
                             dx -=3;
                         //System.out.println("UP"); break;
-                    case U:
-                        // System.out.println("UP Pressed"); break;
-                    case D:
-                        System.out.println("D Pressed"); break;
-                    case R: System.out.println("Right"); break;
-                    case O:  System.out.println("DOWN"); break;
-                    case L:  System.out.println("LEFT"); break;
                     default:
-                        System.out.println("Horha h");
+                        System.out.println("Random key Pressed");
                 }
             }
         });
@@ -488,7 +485,7 @@ public class Gameplay  extends Application {
 //                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
                 if(ball.getLayoutY()<=400 )
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
-                if(obstacleOnScreen.getLayoutY()>=550 || obstacleOnScreen.getLayoutY()<=100){
+                if(obstacleOnScreen.getLayoutY()>=600|| obstacleOnScreen.getLayoutY()<=100){
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
@@ -549,14 +546,15 @@ public class Gameplay  extends Application {
 
     public void GameOver()throws IOException{
         timeline.stop();
+        Audio.getInstance().playMusic("/assets/Sounds/gameOver.wav", 0, 7);
         int color, obstacle, x, y,score;
-        if(ball.getStroke()== Color.RED){
+        if(ball.getFill()== Color.RED){
             color = 1;
         }
-        else if(ball.getStroke() == Color.BLUE){
+        else if(ball.getFill() == Color.DODGERBLUE){
             color =2;
         }
-        else if(ball.getStroke() == Color.GREEN){
+        else if(ball.getFill() == Color.LIME){
             color = 3;
         }
         else{
