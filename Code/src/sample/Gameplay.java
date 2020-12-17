@@ -79,7 +79,7 @@ public class Gameplay  extends Application {
         obstacleOnTop = loader.getController();
         obstacleToCome = obstacleQueue.peek();
         System.out.println("ObstacleOnTop new Class :  " + obstacleOnTop.getClass().toString());
-        obstacleOnScreen = obstacleOnTop.getObstacle();
+        obstacleOnScreen = obstacleOnTop.getObstacle(ball.getFill());
         obstacleOnScreen.setLayoutY(0);
         Pane.getChildren().add(obstacleOnScreen);
     }
@@ -137,7 +137,7 @@ public class Gameplay  extends Application {
         loader.load();
         obstacleOnTop = loader.getController();
         obstacleToCome = obstacleQueue.peek();
-        obstacleOnScreen = obstacleOnTop.getObstacle();
+        obstacleOnScreen = obstacleOnTop.getObstacle(ball.getFill());
         if(obstacleOnScreen == null){
             System.out.println("Nahi hua nahi hua");
             exit();
@@ -200,7 +200,7 @@ public class Gameplay  extends Application {
 //                }
 
                 increaseScore(checkStars());
-
+                obstacleOnTop.checkColorChanger(ball);
                 if(checkIntersection()){
                     System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
@@ -381,7 +381,7 @@ public class Gameplay  extends Application {
         loader.load();
         obstacleOnTop = loader.getController();
         obstacleToCome = obstacleQueue.peek();
-        obstacleOnScreen = obstacleOnTop.getObstacle();
+        obstacleOnScreen = obstacleOnTop.getObstacle(ball.getFill());
         if(obstacleOnScreen == null){
             System.out.println("Nahi hua nahi hua");
             exit();
@@ -438,26 +438,15 @@ public class Gameplay  extends Application {
                     ball.toFront();
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
-                //Checking if ball touches any star
-//                if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
-//                    System.out.println("Hell yeah");
-//                    Star.setLayoutY((Star.getLayoutY()+150)%600);
-////                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
-//                }
-                //Detecting collision with obstaclew
-                if(obstacleOnScreen.getBoundsInParent().intersects(ball.getBoundsInParent())){
-                    System.out.println("Here ");
-                    //System.out.println(obstacleOnTop.intersectsWrongColour(ball));
-//                    if(finalObstacleOnTop.checkCollisions(ball.getBoundsInParent())){
-//                        System.out.println("BAll collided");
-//                    }
-////
-//                    if(finalObstacleOnTop.intersectsWrongColour(ball)){
-//                        System.out.println("Game Over Ho Gaya");
-//                        isplaying = false;
-//                    }
-                }
 
+
+                increaseScore(checkStars());
+                obstacleOnTop.checkColorChanger(ball);
+                if(checkIntersection()){
+                    System.out.println("Intersection detect Ho gaya");
+                    isplaying = false;
+                    //exit();
+                }
 
                 if(obstacleOnScreen.getLayoutY() > 1024) {
                     try {

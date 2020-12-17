@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
@@ -18,8 +19,11 @@ public class rectangularObstacle extends Obstacle{
     protected Rectangle side_4;
 
     @Override
-    public Group getObstacle(){
+    public Group getObstacle(Paint paint){
         rotateFunction(finalObstacle, 0, 360);
+        setImage();
+        setStar(star_1);
+        setColorChange(paint);
         return finalObstacle;
     }
 

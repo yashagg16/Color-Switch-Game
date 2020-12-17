@@ -8,6 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -41,13 +42,13 @@ public class ObstacleX extends Obstacle {
     @FXML
     protected Rectangle rect_8;
     @FXML
-    protected ImageView star_5;
+    protected Rectangle star_5;
     @FXML
-    protected ImageView star_6;
+    protected Rectangle star_6;
     @FXML
-    protected ImageView star_7;
+    protected Rectangle star_7;
     @FXML
-    protected  ImageView star_8;
+    protected  Rectangle star_8;
 //    public ObstacleX() throws IOException {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("ObstacleX.fxml"));
 //        loader.load();
@@ -65,9 +66,18 @@ public class ObstacleX extends Obstacle {
 //        this.rect_8 = obs.rect_8;
 //    }
 
-    public Group getObstacle() throws IOException {
+    public Group getObstacle(Paint paint) throws IOException {
         rotateFunction(obstacle_x, 0, 360);
         rotateFunction(obstacle_x1, 360, 0);
+        setImage();
+        setStar(star_1);
+        setStar(star_2);
+        setStar(star_3);
+        setStar(star_4);
+        setStar(star_5);
+        setStar(star_6);
+        setStar(star_7);
+        setStar(star_8);
         return finalObstacle;
     }
     @Override
@@ -82,6 +92,15 @@ public class ObstacleX extends Obstacle {
     @Override
     public int checkStars(Circle ball){
         return starIntersects(star_1, ball) + starIntersects(star_2, ball) + starIntersects(star_3, ball) + starIntersects(star_4, ball) + starIntersects(star_5, ball) + starIntersects(star_6, ball) + starIntersects(star_7, ball) + starIntersects(star_8, ball);
+    }
+
+    @Override
+    public void removeImage(Rectangle image) {
+        if (obstacle_x.getChildren().contains(image)) {
+            obstacle_x.getChildren().remove(image);
+        } else {
+            obstacle_x1.getChildren().remove(image);
+        }
     }
 //    public boolean checkForBar(Rectangle bar, Circle ball){
 //        if(bar == null){

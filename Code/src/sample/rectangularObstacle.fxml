@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.rectangularObstacle">
    <children>
-      <Group fx:id="finalObstacle" layoutX="386.0" layoutY="259.0">
+      <Group fx:id="finalObstacle" layoutX="397.0" layoutY="294.0">
          <children>
-            <Rectangle fx:id="side_1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="25.07574462890625" layoutY="187.18789672851562" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-            <Rectangle fx:id="side_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="30.0" layoutX="54.0" layoutY="-14.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-            <Rectangle fx:id="side_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="30.0" layoutX="-61.0" layoutY="72.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-            <Rectangle fx:id="side_4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="30.0" layoutX="140.0" layoutY="101.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-            <ImageView fx:id = "star_1" fitHeight="150.0" fitWidth="100.0" layoutX="78.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/star.png" />
-               </image>
-            </ImageView>
+            <Rectangle fx:id="side_1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="1.07574462890625" layoutY="201.18789672851562" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="side_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="30.0" layoutX="30.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="side_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="30.0" layoutX="-85.0" layoutY="85.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="side_4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="30.0" layoutX="116.0" layoutY="115.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle fx:id="star_1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="85.0" layoutX="54.0" layoutY="79.0" stroke="BLACK" strokeType="INSIDE" width="88.0" />
+            <Circle fx:id = "colorChanger" fill="DODGERBLUE" layoutX="116.0" layoutY="-50.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Group>
    </children>

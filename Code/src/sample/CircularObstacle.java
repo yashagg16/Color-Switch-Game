@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
@@ -27,8 +28,6 @@ public class CircularObstacle extends Obstacle{
     protected Arc arc_4;
     @FXML
     protected Circle inCircle;
-    @FXML
-    protected ImageView starImage;
 
 //    public CircularObstacle() throws IOException {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("CircularObstacle.fxml"));
@@ -42,9 +41,10 @@ public class CircularObstacle extends Obstacle{
 //        this.inCircle = obs.inCircle;
 //    }
 
-    public Group getObstacle() throws IOException {
+    public Group getObstacle(Paint paint) throws IOException {
         rotateFunction(finalObstacle, 0, 360);
-
+        setImage();
+        setStar(star_1);
         return finalObstacle;
     }
     @Override

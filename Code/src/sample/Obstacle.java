@@ -13,9 +13,12 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -50,13 +53,19 @@ public class Obstacle extends Application {
     @FXML
     protected  Rectangle bar4;
     @FXML
-    protected ImageView star_1;
+    protected Rectangle star_1;
     @FXML
-    protected  ImageView star_2;
+    protected  Rectangle star_2;
     @FXML
-    protected ImageView star_3;
+    protected Rectangle star_3;
     @FXML
-    protected ImageView star_4;
+    protected Rectangle star_4;
+    @FXML
+    protected Circle colorChanger;
+
+    protected Image image;
+
+    protected  ArrayList<Paint> colors = new ArrayList<>();
     protected double dx = 0.1;
     public void setSpeedX(){
         speedX = 100;
@@ -84,7 +93,7 @@ public class Obstacle extends Application {
 //        stage.show();
 //    }
 
-//    public Obstacle() throws IOException {
+    //    public Obstacle() throws IOException {
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("Obstacle.fxml"));
 //        Obstacle obstacle = loader.getController();
 //        this.bar1 = obstacle.bar1;
@@ -93,6 +102,12 @@ public class Obstacle extends Application {
 //        this.bar4 = obstacle.bar4;
 //        this.finalObstacle = obstacle.finalObstacle ;
 //    }
+    public Obstacle(){
+        colors.add(Color.LIME);
+        colors.add(Color.DODGERBLUE);
+        colors.add(Color.RED);
+        colors.add(Color.YELLOW );
+    }
     public void rotateFunction(Parent parent, int stAngle, int endAngle){
         RotateTransition rotate = new RotateTransition();
         rotate.setAxis(Rotate.Z_AXIS);
@@ -126,13 +141,41 @@ public class Obstacle extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(true);
         final KeyValue kv = new KeyValue(translate.xProperty(), random());
-        final KeyFrame kf = new KeyFrame(Duration.millis(4000), kv);
+        final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
         finalObstacle.getTransforms().add(translate);
     }
-    public Group getObstacle() throws IOException {
+    protected void setImage(){
+        image = new Image("/assets/star.png");
+    }
+    protected void setStar(Rectangle star){
+        if(star == null){
+            return;
+        }
+        star.setFill(new ImagePattern(image));
+    }
+    protected void setColorChange(Paint paint){
+        if(colorChanger == null){
+            return;
+        }
+        colors.remove(paint);
+        Random random = new Random();
+        colorChanger.setFill(colors.get(random.nextInt(colors.size())));
+        colors.add(paint);
+    }
+    public Group getObstacle(Paint paint) throws IOException {
         setTranslate(finalObstacle);
+        setImage();
+        setStar(star_1);
+        System.out.println ("star_1");
+        setStar(star_2);
+        System.out.println("star_2");
+        setStar(star_3);
+        System.out.println("star_3");
+        setStar(star_4);
+        System.out.println("star_4");
+        setColorChange(paint);
         return finalObstacle;
     }
     private int random(){
@@ -166,6 +209,9 @@ public class Obstacle extends Application {
             System.out.println("Bar is null");
             return false;
         }
+        if(ball == null){
+            System.out.println("Ball is null");
+        }
         Shape s = Shape.intersect(bar, ball);
         boolean collisionHappens;
         boolean colorNotSame;
@@ -176,7 +222,7 @@ public class Obstacle extends Application {
         else{
             collisionHappens = false;
         }
-        System.out.println(bar.getFill() + " " + ball.getFill()); 
+        System.out.println(bar.getFill() + " " + ball.getFill());
         if(!bar.getFill().equals(ball.getFill())){
 
             System.out.println("color is not same");
@@ -192,7 +238,10 @@ public class Obstacle extends Application {
         return starIntersects(star_1, ball) + starIntersects(star_2, ball) + starIntersects(star_3, ball) + starIntersects(star_4, ball);
     }
 
-    protected int starIntersects(ImageView image, Circle ball){
+    protected void removeImage(Rectangle image){
+        finalObstacle.getChildren().remove(image);
+    }
+    protected int starIntersects(Rectangle image, Circle ball){
         if(image == null){
             System.out.println("The image is null");
             exit();
@@ -202,14 +251,29 @@ public class Obstacle extends Application {
             System.out.println("The ball is null");
             return 0;
         }
-        Bounds imageBounds = image.localToScene(image.getBoundsInLocal());
-        Bounds ballBounds = image.localToScene(image.getBoundsInLocal());
-//        System.out.println(imageBounds);
-//        System.out.println(ballBounds);
-        if(imageBounds.intersects(ballBounds)){
+        Shape s = Shape.intersect(image, ball);
+        if(s.getBoundsInParent().getWidth() != -1){
+            System.out.println("star collected");
+            removeImage(image);
             return 1;
         }
         return 0;
     }
+
+    public void checkColorChanger(Circle ball){
+        if(colorChanger == null){
+            return;
+        }
+        if(ball == null){
+            return;
+        }
+        Shape s = Shape.intersect(ball, colorChanger);
+        if(s.getBoundsInParent().getWidth() != -1){
+            System.out.println("Change Color");
+            ball.setFill(colorChanger.getFill());
+            finalObstacle.getChildren().remove(colorChanger);
+        }
+    }
+
 
 }

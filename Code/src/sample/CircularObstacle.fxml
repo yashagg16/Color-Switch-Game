@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
 <AnchorPane prefHeight="820.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CircularObstacle">
    <children>
-      <Group fx:id="finalObstacle" layoutX="462.0" layoutY="360.0">
+      <Group fx:id="finalObstacle" layoutX="462.0" layoutY="360.0" scaleX="2.0" scaleY="2.0">
          <children>
             <Arc fx:id="arc_1" fill="LIME" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
             <Arc fx:id="arc_2" fill="YELLOW" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
             <Arc fx:id="arc_3" fill="RED" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
             <Arc fx:id="arc_4" fill="DODGERBLUE" layoutX="50.0" layoutY="50.0" length="90.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
             <Circle fx:id="inCircle" layoutX="50.0" layoutY="50.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
-            <ImageView fx:id="star_1" fitHeight="100.0" fitWidth="76.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/star.png" />
-               </image>
-            </ImageView>
+            <Rectangle fx:id="star_1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="76.0" layoutX="7.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="78.0" />
          </children>
       </Group>
    </children>
