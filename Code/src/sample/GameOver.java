@@ -15,6 +15,7 @@ public class GameOver {
     private Label Score;
 
     public void init(String score){
+
         this.Score.setText(score);
     }
 

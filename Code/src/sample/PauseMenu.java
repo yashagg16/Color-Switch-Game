@@ -72,6 +72,11 @@ public class PauseMenu  extends Application {
 //        window.show();
 
     }
+    @FXML
+    public void MainMenu(ActionEvent event) throws IOException{
+        StartMenu startMenu = new StartMenu();
+        startMenu.start((Stage) GamePlayRoot.getScene().getWindow());
+    }
 
     @Override
     public void start(Stage PrimaryStage) throws IOException {
