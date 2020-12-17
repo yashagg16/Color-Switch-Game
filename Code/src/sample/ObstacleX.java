@@ -67,8 +67,8 @@ public class ObstacleX extends Obstacle {
 //    }
 
     public Group getObstacle(Paint paint) throws IOException {
-        rotateFunction(obstacle_x, 0, 360);
-        rotateFunction(obstacle_x1, 360, 0);
+        rotateFunction(obstacle_x, 360, 0);
+        rotateFunction(obstacle_x1, 0, 360);
         setImage();
         setStar(star_1);
         setStar(star_2);
