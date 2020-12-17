@@ -393,6 +393,7 @@ public class Gameplay  extends Application {
         ScoreLabel.toFront();
         dx = 3;
         balljump = ball.getLayoutY();
+        ball.setLayoutY(load.corY);
         ball.toFront();
 
         int color = load.color;
