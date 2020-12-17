@@ -7,20 +7,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import static javafx.application.Application.launch;
+import static javafx.application.Platform.exit;
 
 public class StartMenu extends Application {
     @FXML
@@ -79,6 +84,7 @@ public class StartMenu extends Application {
     }
     @FXML
     void exitStartMenu(ActionEvent event) throws IOException {
+        exit();
     }
     private static MediaPlayer mediaPlayer;
     @Override
@@ -101,6 +107,24 @@ public class StartMenu extends Application {
         Loadmenu controller = fxmlLoader.getController();
         controller.init(event);
         startMenuScreen.getChildren().setAll(pane);
+    }
+    @FXML
+    void highScore(ActionEvent event){
+        //Stage pane = (Stage) home.getScene().getWindow();
+        Alert.AlertType type = Alert.AlertType.INFORMATION;
+        Alert al = new Alert(type, "");
+        al.initModality(Modality.APPLICATION_MODAL);
+        al.initOwner(startMenuScreen.getScene().getWindow());
+        al.getDialogPane().setContentText("Current Highscore is 52.");
+        al.getDialogPane().setHeaderText("Highscore");
+        Optional<ButtonType> input = al.showAndWait();
+        if(input.get() == ButtonType.OK){
+            al.close();
+            //pane.close();
+        }
+        else if(input.get() == ButtonType.CANCEL){
+            al.close();
+        }
     }
 
 }

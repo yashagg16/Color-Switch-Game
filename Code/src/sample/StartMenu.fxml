@@ -7,8 +7,8 @@
 <AnchorPane fx:id="startMenuScreen" prefHeight="770.0" prefWidth="1040.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StartMenu">
    <children>
       <Button alignment="CENTER" layoutX="463.0" layoutY="229.0" mnemonicParsing="false" onAction="#LoadMenu" onMouseEntered="#flipResumeGameIcon" prefHeight="56.0" prefWidth="145.0" text="Resume Game" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
-      <Button alignment="CENTER" layoutX="463.0" layoutY="330.0" mnemonicParsing="false" onMouseEntered="#flipHighScoreIcon" prefHeight="56.0" prefWidth="145.0" text="High Scores" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
-      <Button alignment="CENTER" layoutX="463.0" layoutY="430.0" mnemonicParsing="false" onMouseEntered="#flipExitIcon" prefHeight="56.0" prefWidth="145.0" text="Exit Game" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+      <Button alignment="CENTER" layoutX="463.0" layoutY="330.0" mnemonicParsing="false" onAction="#highScore" onMouseEntered="#flipHighScoreIcon" prefHeight="56.0" prefWidth="145.0" text="High Scores" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+      <Button alignment="CENTER" layoutX="463.0" layoutY="430.0" mnemonicParsing="false" onAction="#exitStartMenu" onMouseEntered="#flipExitIcon" prefHeight="56.0" prefWidth="145.0" text="Exit Game" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
       <ImageView fx:id="resumeGameIcon" fitHeight="56.0" fitWidth="71.0" layoutX="370.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/load(3).png" />
