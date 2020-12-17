@@ -114,7 +114,7 @@ public class Obstacle extends Application {
         rotate.setFromAngle(stAngle);
         rotate.setToAngle(endAngle);
         rotate.setCycleCount(RotateTransition.INDEFINITE);
-        rotate.setDuration(Duration.millis(3000));
+        rotate.setDuration(Duration.millis(5000));
         rotate.setNode(parent);
         rotate.play();
     }
