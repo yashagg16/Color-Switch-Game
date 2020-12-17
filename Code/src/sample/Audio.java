@@ -20,7 +20,7 @@ public class Audio {
         if(file == null){
             System.out.println("Error");
         }
-        System.out.println(file.toURI().toString());
+//        System.out.println(file.toURI().toString());
         Media media = new  Media(Audio.class.getResource(path).toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);

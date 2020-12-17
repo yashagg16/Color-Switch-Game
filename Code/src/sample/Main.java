@@ -78,7 +78,7 @@ public class Main extends Application {
 
         //creating the inner circle
         final Circle circ2 = new Circle(512, 410, 80, Color.BLACK);
-//        MediaPlayer mp = Audio.getInstance().playMusic("/assets/Sounds/gameOver.wav");
+        Audio.getInstance().playMusic("/assets/Sounds/gameStart.wav", 0, 5).play();
         //final group to add all the elements into
         final Group root = new Group();
         root.getChildren().add(outerCircle);

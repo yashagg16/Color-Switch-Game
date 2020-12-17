@@ -25,23 +25,30 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="">
+    <list default="true" id="fd4f6a46-469d-4db4-98a7-1a77ded4af05" name="Default Changelist" comment="more changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Code.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Load.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Load.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Code/assets/startingAudio.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Audio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Audio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/GameOver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/GameOver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/GameOver.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/GameOver.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Gameplay.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/PauseMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/PauseMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/startingAudio.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/StartMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Code/sample/pauseMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Code/sample/pauseMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Audio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Audio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Gameplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/StartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StartMenu.java" afterDir="false" />
     </list>
+    <list id="fcc0142c-89e3-416d-b6d7-d7fc60f76dd8" name="Uncommitted changes before Update at 17/12/20, 5:15 PM [Default Changelist]" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -275,16 +282,23 @@
       <option name="project" value="LOCAL" />
       <updated>1608180207713</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="more changes.">
+      <created>1608212643286</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1608212643286</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
+    <option name="COLUMN_ID_ORDER">
       <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
       </list>
     </option>
   </component>
@@ -326,7 +340,8 @@
     <MESSAGE value="added star collision" />
     <MESSAGE value="added the colorChanger&#10;added the starCollision" />
     <MESSAGE value="made a minor change to the rectangular obstacle" />
-    <option name="LAST_COMMIT_MESSAGE" value="made a minor change to the rectangular obstacle" />
+    <MESSAGE value="more changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="more changes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

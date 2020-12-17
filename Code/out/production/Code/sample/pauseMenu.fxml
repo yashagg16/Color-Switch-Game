@@ -13,7 +13,7 @@
       </ImageView>
       <Button layoutX="137.0" layoutY="531.0" mnemonicParsing="false" onAction="#play" onMouseClicked="#play" prefHeight="36.0" prefWidth="122.0" text="Resume Game" textAlignment="CENTER" />
       <Button layoutX="337.0" layoutY="531.0" mnemonicParsing="false" onAction="#save" prefHeight="36.0" prefWidth="87.0" text="Save" />
-      <Button layoutX="551.0" layoutY="531.0" mnemonicParsing="false" onAction="#exit" prefHeight="36.0" prefWidth="87.0" text="Exit" />
-      <Button layoutX="764.0" layoutY="531.0" mnemonicParsing="false" onAction="#Enterplayernamescreen" prefHeight="36.0" prefWidth="107.0" text="Do Special" />
+      <Button layoutX="551.0" layoutY="531.0" mnemonicParsing="false" onAction="#exit2" prefHeight="36.0" prefWidth="87.0" text="Exit" />
+      <Button layoutX="764.0" layoutY="531.0" mnemonicParsing="false" onAction="#MainMenu" prefHeight="36.0" prefWidth="107.0" text="Main Menu" />
    </children>
 </AnchorPane>

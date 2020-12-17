@@ -26,10 +26,11 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Scanner;
 
 import static javafx.application.Platform.exit;
 
@@ -57,6 +58,7 @@ public class Gameplay  extends Application {
     private double balljump;
     private Queue<Obstacle> obstacleQueue = new LinkedList<>();
     private boolean isplaying = false;
+    private long highScore;
     public FXMLLoader loadTheLoader(String name) throws IOException {
         return new FXMLLoader(getClass().getResource(name));
     }
@@ -96,8 +98,32 @@ public class Gameplay  extends Application {
     public void increaseScore(int val){
         ScoreLabel.setText(Integer.toString(Integer.parseInt(ScoreLabel.getText()) + val));
     }
+    public void updateHighScore() throws IOException {
+        if((highScore < Long.parseLong(ScoreLabel.getText()))){
+            highScore = Long.parseLong(ScoreLabel.getText());
+        }
+        Writer wr = new FileWriter("HighScore.txt");
+        wr.write(Long.toString(highScore));
+        wr.close();
+        try{
+            File file = new File("HighScore.txt");
+            Scanner sc = new Scanner(file);
+            int val = sc.nextInt();
+//            System.out.println("val is : " + val);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     public void initData(ActionEvent event) throws IOException {
+        try{
+            File file = new File("HighScore.txt");
+            Scanner sc = new Scanner(file);
+            highScore = sc.nextInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         isplaying = false;
         System.out.println("Working??");
         dx = 3;
@@ -160,6 +186,7 @@ public class Gameplay  extends Application {
                 switch (event.getCode()) {
                     case W:
                         balljump = ball.getLayoutY()-100;
+                        Audio.getInstance().playMusic("/assets/Sounds/jump.wav",0 , 1);
                         //Pane.setLayoutY(Pane.getLayoutY() +2);
                         if(dx>0)
                             dx = -5;
@@ -211,13 +238,16 @@ public class Gameplay  extends Application {
                 obstacleOnTop.checkColorChanger(ball);
                 if(checkIntersection()){
                     //System.out.println("Intersection detect Ho gaya");
+                    try {
+                        updateHighScore();
+                    } catch (IOException ignored) {
+
+                    }
                     isplaying = false;
-                    //exit();
                     try {
                         GameOver();
-                    }
-                    catch (IOException e){
-
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
 
@@ -316,7 +346,7 @@ public class Gameplay  extends Application {
         }
         Loader pausegame = new Loader(Integer.parseInt(ScoreLabel.getText()),color,obstacle,ball.getCenterX(),ball.getCenterY());
         pausegame.writeOut();
-        System.out.println("Writeout completed");
+//        System.out.println("Writeout completed");
         Parent Pause = FXMLLoader.load(getClass().getResource("pauseMenu.fxml"));
         Scene player = new Scene(Pause);
 
@@ -422,6 +452,7 @@ public class Gameplay  extends Application {
                 switch (event.getCode()) {
                     case W:
                         balljump = ball.getLayoutY()-100;
+                        Audio.getInstance().playMusic("/assets/Sounds/jump.wav",0 , 1);
                         //Pane.setLayoutY(Pane.getLayoutY() +2);
                         if(dx>0)
                             dx = -5;
@@ -469,6 +500,7 @@ public class Gameplay  extends Application {
                    // System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
                     try {
+                        updateHighScore();
                         GameOver();
                     }
                     catch (IOException e){

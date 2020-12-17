@@ -21,8 +21,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.Scanner;
 
 import static javafx.application.Application.launch;
 import static javafx.application.Platform.exit;
@@ -65,6 +69,7 @@ public class StartMenu extends Application {
         rotate.setDuration(Duration.millis(1000));
         rotate.setNode((Node)Icon);
         rotate.play();
+        Audio.getInstance().playMusic("/assets/Sounds/spinning.wav",0,1).play();
     }
     @FXML
     void flipNewGameIcon (MouseEvent event) throws  IOException {
@@ -109,13 +114,20 @@ public class StartMenu extends Application {
         startMenuScreen.getChildren().setAll(pane);
     }
     @FXML
-    void highScore(ActionEvent event){
-        //Stage pane = (Stage) home.getScene().getWindow();
+    void highScore(ActionEvent event) throws FileNotFoundException {
+        int val = 0;
+        try{
+            File file = new File("HighScore.txt");
+            Scanner sc = new Scanner(file);
+            val = sc.nextInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Alert.AlertType type = Alert.AlertType.INFORMATION;
         Alert al = new Alert(type, "");
         al.initModality(Modality.APPLICATION_MODAL);
         al.initOwner(startMenuScreen.getScene().getWindow());
-        al.getDialogPane().setContentText("Current Highscore is 52.");
+        al.getDialogPane().setContentText("Current Highscore is " + val);
         al.getDialogPane().setHeaderText("Highscore");
         Optional<ButtonType> input = al.showAndWait();
         if(input.get() == ButtonType.OK){
