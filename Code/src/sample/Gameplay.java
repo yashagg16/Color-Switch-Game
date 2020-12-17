@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
@@ -78,7 +79,7 @@ public class Gameplay  extends Application {
         loader.load();
         obstacleOnTop = loader.getController();
         obstacleToCome = obstacleQueue.peek();
-        System.out.println("ObstacleOnTop new Class :  " + obstacleOnTop.getClass().toString());
+        //System.out.println("ObstacleOnTop new Class :  " + obstacleOnTop.getClass().toString());
         obstacleOnScreen = obstacleOnTop.getObstacle(ball.getFill());
         obstacleOnScreen.setLayoutY(0);
         Pane.getChildren().add(obstacleOnScreen);
@@ -164,9 +165,9 @@ public class Gameplay  extends Application {
                             dx = -5;
                         else
                             dx -=3;
-                        System.out.println("UP"); break;
+                        //System.out.println("UP"); break;
                     case U:
-                        System.out.println("UP Pressed"); break;
+                        //System.out.println("UP Pressed"); break;
                     case D:
                         System.out.println("D Pressed"); break;
                     case R: System.out.println("Right"); break;
@@ -193,6 +194,12 @@ public class Gameplay  extends Application {
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
+                if(ball.getLayoutY()<0){
+                    ball.setLayoutY(0);
+                }
+                if (ball.getLayoutY()>800){
+                    ball.setLayoutY(800);
+                }
                 //Checking if ball touches any star
 //                if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
 //                    System.out.println("Hell yeah");
@@ -205,7 +212,13 @@ public class Gameplay  extends Application {
                 if(checkIntersection()){
                     //System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
-                    exit();
+                    //exit();
+                    try {
+                        GameOver();
+                    }
+                    catch (IOException e){
+
+                    }
                 }
 
                 //Detecting collision with obstacle
@@ -410,9 +423,9 @@ public class Gameplay  extends Application {
                             dx = -5;
                         else
                             dx -=3;
-                        System.out.println("UP"); break;
+                        //System.out.println("UP"); break;
                     case U:
-                        System.out.println("UP Pressed"); break;
+                       // System.out.println("UP Pressed"); break;
                     case D:
                         System.out.println("D Pressed"); break;
                     case R: System.out.println("Right"); break;
@@ -439,7 +452,12 @@ public class Gameplay  extends Application {
                     obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
-
+                if(ball.getLayoutY()<0){
+                    ball.setLayoutY(0);
+                }
+                if (ball.getLayoutY()>800){
+                    ball.setLayoutY(800);
+                }
 
                 increaseScore(checkStars());
                 obstacleOnTop.checkColorChanger(ball);
@@ -480,5 +498,46 @@ public class Gameplay  extends Application {
         timeline.play();
 
     }
+
+    public void GameOver()throws IOException{
+        int color, obstacle, x, y,score;
+        if(ball.getStroke()== Color.RED){
+            color = 1;
+        }
+        else if(ball.getStroke() == Color.BLUE){
+            color =2;
+        }
+        else if(ball.getStroke() == Color.GREEN){
+            color = 3;
+        }
+        else{
+            // Yellow
+            color = 4;
+        }
+        //default case for trying now.....
+        obstacle =1;
+        //Uncomment following if statements to make it working
+        if(obstacleOnTop instanceof ObstacleX){
+            obstacle = 1;
+        }
+        else if(obstacleOnTop instanceof CircularObstacle){
+            obstacle = 2;
+        }
+        else{
+            obstacle = 3;
+        }
+        Loader pausegame = new Loader(Integer.parseInt(ScoreLabel.getText()),color,obstacle,ball.getCenterX(),ball.getCenterY());
+        pausegame.writeOut();
+        //System.out.println("Writeout completed");
+        String score1 = ScoreLabel.getText();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameOver.fxml"));
+        AnchorPane pane=fxmlLoader.load();
+        //Parent root = (Parent) loader.load();
+        GameOver controller = fxmlLoader.getController();
+        controller.init(score1);
+        //AnchorPane pane=fxmlLoader.load();
+        this.Pane.getChildren().setAll(pane);
+    }
+
 
 }
