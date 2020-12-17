@@ -141,7 +141,7 @@ public class Obstacle extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(true);
         final KeyValue kv = new KeyValue(translate.xProperty(), random());
-        final KeyFrame kf = new KeyFrame(Duration.millis(2000), kv);
+        final KeyFrame kf = new KeyFrame(Duration.millis(2500), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
         finalObstacle.getTransforms().add(translate);

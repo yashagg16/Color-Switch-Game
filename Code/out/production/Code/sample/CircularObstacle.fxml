@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1024.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CircularObstacle">
+<AnchorPane prefHeight="820.0" prefWidth="1024.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CircularObstacle">
    <children>
       <Group fx:id="finalObstacle" layoutX="462.0" layoutY="360.0" scaleX="2.0" scaleY="2.0">
          <children>
