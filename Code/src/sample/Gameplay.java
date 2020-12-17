@@ -26,7 +26,10 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -58,6 +61,7 @@ public class Gameplay  extends Application {
     private double balljump;
     private Queue<Obstacle> obstacleQueue = new LinkedList<>();
     private boolean isplaying = false;
+    private Timeline timeline;
     private long highScore;
     public FXMLLoader loadTheLoader(String name) throws IOException {
         return new FXMLLoader(getClass().getResource(name));
@@ -83,7 +87,7 @@ public class Gameplay  extends Application {
         obstacleToCome = obstacleQueue.peek();
         //System.out.println("ObstacleOnTop new Class :  " + obstacleOnTop.getClass().toString());
         obstacleOnScreen = obstacleOnTop.getObstacle(ball.getFill());
-        obstacleOnScreen.setLayoutY(0);
+        obstacleOnScreen.setLayoutY(-100);
         Pane.getChildren().add(obstacleOnScreen);
     }
     public boolean checkIntersection(){
@@ -120,12 +124,12 @@ public class Gameplay  extends Application {
             File file = new File("HighScore.txt");
             Scanner sc = new Scanner(file);
             highScore = sc.nextInt();
-        } catch (IOException e) {
+        }
+        catch(IOException e){
             e.printStackTrace();
         }
-
         isplaying = false;
-        System.out.println("Working??");
+//        System.out.println("Working??");
         dx = 3;
         balljump = ball.getLayoutY();
 
@@ -172,7 +176,7 @@ public class Gameplay  extends Application {
         else{
             System.out.println("AA GAYA");
         }
-        obstacleOnScreen.setLayoutY(0);
+        obstacleOnScreen.setLayoutY(-100);
         Pane.getChildren().add(obstacleOnScreen);
         ball.toFront();
         Pane.onKeyPressedProperty( );
@@ -207,7 +211,7 @@ public class Gameplay  extends Application {
         });
 
         sample.Obstacle finalObstacleOnTop = obstacleOnTop;
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
+        timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
 
 
 
@@ -238,16 +242,14 @@ public class Gameplay  extends Application {
                 obstacleOnTop.checkColorChanger(ball);
                 if(checkIntersection()){
                     //System.out.println("Intersection detect Ho gaya");
+                    isplaying = false;
+                    //exit();
                     try {
                         updateHighScore();
-                    } catch (IOException ignored) {
-
-                    }
-                    isplaying = false;
-                    try {
                         GameOver();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    }
+                    catch (IOException e){
+
                     }
                 }
 
@@ -395,7 +397,7 @@ public class Gameplay  extends Application {
 //    });
     public void loadfromPause(Loader load, ActionEvent event) throws IOException{
         isplaying = false;
-        System.out.println("Loading from the pause Menu");
+//        System.out.println("Loading from the pause Menu");
         ScoreLabel.setText(String.valueOf(load.score));
         ScoreLabel.toFront();
         dx = 3;
@@ -405,7 +407,10 @@ public class Gameplay  extends Application {
         int val = load.obstacle;
         Random random = new Random();
         for(int i =0; i<10;i++){
-            if(val%3 == 0){
+            if(val==4){
+                obstacleQueue.add(new rectangularObstacle());
+            }
+            else if (val%3 == 0){
                 obstacleQueue.add(new Obstacle());
             }
             else if(val %3 == 1){
@@ -460,7 +465,7 @@ public class Gameplay  extends Application {
                             dx -=3;
                         //System.out.println("UP"); break;
                     case U:
-                       // System.out.println("UP Pressed"); break;
+                        // System.out.println("UP Pressed"); break;
                     case D:
                         System.out.println("D Pressed"); break;
                     case R: System.out.println("Right"); break;
@@ -473,7 +478,7 @@ public class Gameplay  extends Application {
         });
 
         sample.Obstacle finalObstacleOnTop = obstacleOnTop;
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {
+        timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {
 
 
 
@@ -497,7 +502,7 @@ public class Gameplay  extends Application {
                 increaseScore(checkStars());
                 obstacleOnTop.checkColorChanger(ball);
                 if(checkIntersection()){
-                   // System.out.println("Intersection detect Ho gaya");
+                    // System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
                     try {
                         updateHighScore();
@@ -509,9 +514,10 @@ public class Gameplay  extends Application {
                     //exit();
                 }
 
-                if(obstacleOnScreen.getLayoutY() > 1024) {
+                if(obstacleOnScreen.getLayoutY() > 800) {
                     try {
                         //obstacleOnScreen = obstacleToCome;
+                        obstacleOnScreen.setLayoutY(1024);
                         getNewObstacle();
                         ball.toFront();
                     } catch (IOException e) {
@@ -542,6 +548,7 @@ public class Gameplay  extends Application {
     }
 
     public void GameOver()throws IOException{
+        timeline.stop();
         int color, obstacle, x, y,score;
         if(ball.getStroke()== Color.RED){
             color = 1;
