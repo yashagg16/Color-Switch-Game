@@ -1,0 +1,59 @@
+<changelist name="Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]" date="1608212569469" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 17/12/20, 7:12 PM [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/ObstacleX.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/ObstacleX.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/ObstacleX.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Main.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Gameplay$4.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Gameplay$4.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Gameplay$4.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Gameplay$5.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Gameplay$5.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Gameplay$5.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/PauseMenu.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/PauseMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/PauseMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Gameplay$1.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Gameplay$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Gameplay$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/StartMenu.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/StartMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/StartMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Gameplay$3.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Gameplay$3.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Gameplay$3.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Obstacle.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Obstacle.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Obstacle.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Gameplay$2.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Gameplay$2.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Gameplay$2.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Code/sample/Gameplay.class" />
+    <option name="AFTER_PATH" value="out/production/Code/sample/Gameplay.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_12_20,_7_12_PM_[Default_Changelist]/Gameplay.class" />
+  </binary>
+</changelist>
