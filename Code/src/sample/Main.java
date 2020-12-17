@@ -15,6 +15,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.scene.transform.Rotate;
@@ -76,18 +78,21 @@ public class Main extends Application {
 
         //creating the inner circle
         final Circle circ2 = new Circle(512, 410, 80, Color.BLACK);
-
+//        MediaPlayer mp = Audio.getInstance().playMusic("/assets/Sounds/gameOver.wav");
         //final group to add all the elements into
         final Group root = new Group();
         root.getChildren().add(outerCircle);
         root.getChildren().add(circ2);
         root.getChildren().add(MainPage);
-
+//        mp.play();
         //creating the scene and adding the root to it
         final Scene scene = new Scene(root,  1024, 820, Color.BLACK);
 
         //display
+//        Audio a = Audio.getInstance();
+//        a.playMusic("/assets/Sounds/gameStart.wav");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
         PauseTransition delay = new PauseTransition(Duration.seconds(5));
         delay.setOnFinished( event -> {

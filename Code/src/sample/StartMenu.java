@@ -12,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -78,8 +80,10 @@ public class StartMenu extends Application {
     @FXML
     void exitStartMenu(ActionEvent event) throws IOException {
     }
+    private static MediaPlayer mediaPlayer;
     @Override
     public void start(Stage PrimaryStage) throws IOException {
+//            Audio.getInstance().playMusic("/assets/Sounds/gameStart.wav").play();
             Parent StartMenu = FXMLLoader.load(getClass().getResource("StartMenu.fxml"));
             final Scene scene = new Scene(StartMenu);
 
@@ -87,7 +91,6 @@ public class StartMenu extends Application {
             PrimaryStage.setScene(scene);
             PrimaryStage.show();
     }
-
     public static void main(String[] args){
         launch(args);
     }

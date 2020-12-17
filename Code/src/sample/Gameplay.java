@@ -204,7 +204,7 @@ public class Gameplay  extends Application {
                 if(checkIntersection()){
                     System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
-                    //exit();
+                    exit();
                 }
 
                 //Detecting collision with obstacle

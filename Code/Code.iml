@@ -10,5 +10,6 @@
     <orderEntry type="library" exported="" name="javafx.web" level="project" />
     <orderEntry type="library" exported="" name="javafx.base" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="javafx.media" level="project" />
   </component>
 </module>
