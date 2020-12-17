@@ -197,8 +197,8 @@ public class Gameplay  extends Application {
                 if(ball.getLayoutY()<0){
                     ball.setLayoutY(0);
                 }
-                if (ball.getLayoutY()>800){
-                    ball.setLayoutY(800);
+                if (ball.getLayoutY()>730){
+                    ball.setLayoutY(730);
                 }
                 //Checking if ball touches any star
 //                if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
@@ -306,6 +306,10 @@ public class Gameplay  extends Application {
         }
         else if(obstacleOnTop instanceof CircularObstacle){
             obstacle = 2;
+        }
+        else if(obstacleOnTop instanceof rectangularObstacle
+        ){
+            obstacle = 4;
         }
         else{
             obstacle = 3;
@@ -455,8 +459,8 @@ public class Gameplay  extends Application {
                 if(ball.getLayoutY()<0){
                     ball.setLayoutY(0);
                 }
-                if (ball.getLayoutY()>800){
-                    ball.setLayoutY(800);
+                if (ball.getLayoutY()>730){
+                    ball.setLayoutY(730);
                 }
 
                 increaseScore(checkStars());
@@ -464,6 +468,12 @@ public class Gameplay  extends Application {
                 if(checkIntersection()){
                    // System.out.println("Intersection detect Ho gaya");
                     isplaying = false;
+                    try {
+                        GameOver();
+                    }
+                    catch (IOException e){
+
+                    }
                     //exit();
                 }
 
@@ -522,6 +532,9 @@ public class Gameplay  extends Application {
         }
         else if(obstacleOnTop instanceof CircularObstacle){
             obstacle = 2;
+        }
+        else if(obstacleOnTop instanceof rectangularObstacle){
+            obstacle = 4;
         }
         else{
             obstacle = 3;
