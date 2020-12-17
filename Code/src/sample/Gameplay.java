@@ -147,6 +147,7 @@ public class Gameplay  extends Application {
         }
         obstacleOnScreen.setLayoutY(0);
         Pane.getChildren().add(obstacleOnScreen);
+        ball.toFront();
         Pane.onKeyPressedProperty( );
         ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override public void handle(KeyEvent event) {
@@ -186,10 +187,10 @@ public class Gameplay  extends Application {
             public void handle(ActionEvent t) {
                 //move the ball
 //                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
-                obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+2);
-
-                if(obstacleOnScreen.getLayoutY()>=900){
-                    ball.toFront();
+                if(ball.getLayoutY()<=400 )
+                    obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
+                if(obstacleOnScreen.getLayoutY()>=550 || obstacleOnScreen.getLayoutY()<=200){
+                    obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
                 //Checking if ball touches any star
@@ -432,11 +433,10 @@ public class Gameplay  extends Application {
             public void handle(ActionEvent t) {
                 //move the ball
 //                outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
-                obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+2);
-                //obstacleOnTop.move(2);
-
-                if(obstacleOnScreen.getLayoutY()>=900){
-                    ball.toFront();
+                if(ball.getLayoutY()<=400 )
+                    obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
+                if(obstacleOnScreen.getLayoutY()>=550 || obstacleOnScreen.getLayoutY()<=200){
+                    obstacleOnScreen.setLayoutY(obstacleOnScreen.getLayoutY()+1);
                 }
                 ball.setLayoutY(ball.getLayoutY() + dx);
 
