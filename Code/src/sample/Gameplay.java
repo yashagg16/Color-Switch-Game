@@ -52,8 +52,10 @@ public class Gameplay  extends Application {
     private Group Obstacle;
     private double dx;
     private double balljump;
+    private boolean isplaying = false;
     @FXML
     public void initData(ActionEvent event){
+        isplaying = false;
         System.out.println("Working??");
         
         Group outerCircle = new Group(arc1, arc2, arc3, arc4,Incircle);
@@ -79,12 +81,14 @@ public class Gameplay  extends Application {
         Obstacle.setLayoutY(-400);
         dx = 3;
         balljump = ball.getLayoutY();
+
        // this.play();
        // Pane.
 
         Pane.getChildren().add(outerCircle);
         Pane.getChildren().add(star);
         Pane.getChildren().add(Obstacle);
+        ball.toFront();
 
         Pane.onKeyPressedProperty( );
         ((Node) event.getSource()).getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -93,6 +97,7 @@ public class Gameplay  extends Application {
 //                System.out.println("Code"+event.getCode());
 //                System.out.println("Text"+event.getText());
                 // System.out.println(event.);
+                isplaying = true;
                 switch (event.getCode()) {
                     case W:
                         balljump = ball.getLayoutY()-100;
@@ -115,13 +120,63 @@ public class Gameplay  extends Application {
         });
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), new EventHandler<ActionEvent>() {
-            // double dx = 1; //Step on y or velocity
+
 
 
             @Override
             public void handle(ActionEvent t) {
                 //move the ball
-                ball.setLayoutY(ball.getLayoutY() + dx);
+//                 outerCircle.setLayoutY(outerCircle.getLayoutY()+2);
+//                 Obstacle.setLayoutY(Obstacle.getLayoutY()+2);
+
+                if(outerCircle.getLayoutY()>=900){
+                    outerCircle.setLayoutY(-150);
+                    ball.toFront();
+                }
+  //              ball.setLayoutY(ball.getLayoutY() + dx);
+                if(ball.getLayoutY()<=350){
+                    if(dx>0){
+                        ball.setLayoutY(ball.getLayoutY() + dx);
+                    }
+                    else{
+                        ball.setLayoutY(ball.getLayoutY() -1);
+                        outerCircle.setLayoutY(outerCircle.getLayoutY() -dx+1);
+                        //Star.setLayoutY(Star.getLayoutY() - dx+1);
+                    }
+                }
+                else
+                    ball.setLayoutY(ball.getLayoutY() + dx);
+                
+                //Checking if ball touches any star
+               if(Star.getBoundsInParent().intersects(ball.getBoundsInParent())){
+                    System.out.println("Hell yeah");
+                    Star.setLayoutY((Star.getLayoutY()+150)%600);
+                    ScoreLabel.setText(String.valueOf(Integer.parseInt(ScoreLabel.getText())+1));
+                }
+                //Detecting collision with obstacle
+                if(outerCircle.getBoundsInParent().intersects(ball.getBoundsInParent())){
+                    System.out.println("Here ");
+                    if(arc1.intersects(ball.getBoundsInParent()) && arc1.getStroke()!=ball.getStroke()){
+                        System.out.println("GAme Over");
+                        isplaying = false;
+
+                    }
+                    if(arc2.intersects(ball.getBoundsInParent()) && arc2.getStroke()!=ball.getStroke()){
+                        System.out.println("GAme Over");
+                        isplaying = false;
+
+                    }
+                    if(arc3.intersects(ball.getBoundsInParent()) && arc3.getStroke()!=ball.getStroke()){
+                        isplaying = false;
+
+                    }
+                    if(arc3.intersects(ball.getBoundsInParent()) && arc3.getStroke()!=ball.getStroke()){
+                        System.out.println("GAme Over");
+                        isplaying = false;
+
+                    }
+                }
+
                 //If the ball reaches the left or right border make the step negative
                 //If the ball reaches the bottom or top border make the step negative
                 if(Math.abs(dx)<1){
