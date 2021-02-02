@@ -1,4 +1,4 @@
-# Course_project_AP
+# Color Switch Game
 This is the repository for the course project in the Advanced Programming Course 2020.
 
 
