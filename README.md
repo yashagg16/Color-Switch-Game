@@ -3,16 +3,12 @@ This is the repository for the course project in the Advanced Programming Course
 
 
 # Key Functionalities of the Game
-  1.  Making key objects, the player, the obstacles, the score etc.
-  2.  Implementing dynamics of the game, ball moving against gravity, obstacles moving and collisions.
-        The movements are smooth, 
-  3.  Serialisation and game save file. 5 different games can be saved and then be loaded to play at any time.
-  4.  Pausing the game.
-  5.  Ohter refinements.
-   
-  
-  ## UML DIAGRAM LINK
+  1.  Allows the user to save multiple games and start them from where they left.
+  2.  Dynamic and smooth game play, with continuos moving obstacles. Contains a number of obstacles providing a suitable difficulty         to it.
+  3.  Allows pausing the game and provides a number of other features.
+
+## UML DIAGRAM LINK
   https://app.creately.com/diagram/yD14qt3Xd3V/edit
   
-  ## Use case diagram link
+## Use case diagram link
   https://app.creately.com/diagram/mveGqZYdB6t/edit
