@@ -16,6 +16,3 @@ This is the repository for the course project in the Advanced Programming Course
   
   ## Use case diagram link
   https://app.creately.com/diagram/mveGqZYdB6t/edit
-
-
-<H3> https://docs.google.com/spreadsheets/d/1HorcwREgJNSRJES07spmkiGsCce9wY4rFRXE4A48AYQ/edit#gid=0 </H3>
